@@ -4,9 +4,9 @@ import Hero from "./components/HeroSection/Heromain";
 import About from "./components/About/about";
 import Customecursor from "./cursor-effect/customecursor";
 import ScrollProvider from "./hooks/ScrollContext";
-import Hbar from "./components/About/Hbar";
-import HorizontalBar from "./components/About/horizontalBar";
-import Contentoverlap from "./components/test/contentoverlap";
+// import Hbar from "./components/About/Hbar";
+// import HorizontalBar from "./components/About/horizontalBar";
+// import Contentoverlap from "./components/test/contentoverlap";
 
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       <NavBar/>
       <Hero />
       <About />
-      <Contentoverlap />
+      {/* <Contentoverlap /> */}
 
       {/* <Hbar /> */}
       {/* <HorizontalBar /> */}
