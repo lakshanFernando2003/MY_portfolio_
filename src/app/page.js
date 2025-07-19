@@ -34,11 +34,19 @@ export default function Home() {
     <>
       <ScrollProvider>
       <NavBar/>
-      <Hero />
-      <About />
-      <AboutBentoGrids />
-      <ProjectSection />
-      <RoadMap />
+      <div id="hero">
+        <Hero />
+      </div>
+      <div id="about">
+        <About />
+        <AboutBentoGrids />
+      </div>
+      <div id="projects">
+        <ProjectSection />
+      </div>
+      <div id="roadmap">
+        <RoadMap />
+      </div>
       {/* <Skills /> */}
 
 

@@ -1,6 +1,16 @@
 import Image from 'next/image';
 
 export default function NavBar() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 flex justify-center items-center z-50 ">
       <nav className="mt-3 bg-gradient-to-r from-black/60 via-cyan-500/1 to-black/50 border border-white/20 justify-center items-center rounded-full backdrop-blur-3xl shadow-lg">
@@ -19,11 +29,11 @@ export default function NavBar() {
           <h1 className='text-lg '>Lakshan</h1>
         </div>
         <ul className=" flex flex-row gap-8 items-center pl-2 pr-2">
-          <li>home</li>
-          <li>About Me</li>
-          <li>Projects</li>
-          <li>Skills</li>
-          <li>Road Map</li>
+          <li className="cursor-pointer hover:text-cyan-300 transition-colors" onClick={() => scrollToSection('hero')}>Home</li>
+          <li className="cursor-pointer hover:text-cyan-300 transition-colors" onClick={() => scrollToSection('about')}>About Me</li>
+          <li className="cursor-pointer hover:text-cyan-300 transition-colors" onClick={() => scrollToSection('projects')}>Projects</li>
+          {/* <li>Skills</li> */}
+          <li className="cursor-pointer hover:text-cyan-300 transition-colors" onClick={() => scrollToSection('roadmap')}>Road Map</li>
         </ul>
         <div className='items-center relative '>
           <a className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s]' href=""><span className=' text-xs'>Let's Connect</span></a>
