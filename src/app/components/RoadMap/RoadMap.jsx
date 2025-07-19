@@ -57,7 +57,7 @@ const roadmapData = [
     review: "Currently looking for internship opportunities to gain real-world experience in software development. Polishing my portfolio and enhancing my skills to prepare for the professional world.",
     imgPath: "/images/roadmap3.png",
     logoPath: "/images/logo2.png",
-    title: "Current",
+    title: "Present",
     date: "2025 - Present",
     responsibilities: [
       "Building comprehensive portfolio projects",
@@ -168,7 +168,7 @@ export default function RoadMap() {
         trigger: ".timeline",
         start: "top center",
         end: "90% center",
-        markers: true,
+        markers: false,
         onUpdate: (self) => {
           gsap.to(".timeline", {
             scaleY: 1 - self.progress,
