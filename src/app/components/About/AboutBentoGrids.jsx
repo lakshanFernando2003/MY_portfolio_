@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import PropTypes from 'prop-types';
 import BentoCard from "./BentoCard";
+import Image from "next/image";
 import AnimateLamp from "../Section Lamps/AnimateLamp";
 import GridGlobe from "./Grid-Content/GridGlobe";
+import Collabaration from "./Grid-Content/Collabaration";
+import BeyondCode from "./Grid-Content/BeyondCode";
 import "../MediaQuery/largeScreen.css"
+
 
 // BentoTilt component implementation
 export const BentoTilt = ({ className, children, ...rest }) => {
@@ -53,11 +57,15 @@ BentoTilt.propTypes = {
 };
 
 export const AboutBentoGrids = () => {
-
+  const [lightOn, setLightOn] = useState(false);
   const sectionEndRef = useRef(null);
 
+  const toggleLight = () => {
+    setLightOn(!lightOn);
+  };
+
   return (
-    <div className="Bento-Grids w-full h-auto flex flex-col items-center justify-center z">
+    <div className="Bento-Grids w-full h-auto flex flex-col items-center justify-center z relative">
 
       <div className=" w-full h-[30vh] overflow-hidden ">
             {/* Section lamp Header */}
@@ -65,7 +73,6 @@ export const AboutBentoGrids = () => {
               className=""
               lightClassName="Bento-Lamp"
               beamClassName="Bento-Lamp-beam"
-              // lightScale={100}
               lightOpacity={0.5}
               lightBlur="blur-[48px]"
               enableStickyEffect={true}
@@ -82,45 +89,85 @@ export const AboutBentoGrids = () => {
           </div>
         </div>
 
+      <div className={`Bento-Light absolute inset-auto z-10 h-[55rem] w-[55rem]
+        rounded-[90%] bg-[#8000FF] radial-gradient(circle,rgba(128, 0, 255, 1) 0%, rgba(128, 0, 255, 0.17) 100%)
+        transition-all duration-700 ease-in-out
+        ${lightOn ? 'opacity-10 blur-3xl scale-100' : 'opacity-0 blur-xl scale-50'}`}></div>
 
-      <div className=" w-[90vw] mt-15 mb-10 mx-auto px-3 md:px-10 z-20">
+      <div className=" w-[90vw] mt-15 mb-10 mx-auto px-3 md:px-10 z-40">
         {/* Main large bento tile */}
         <BentoTilt className="border-gray-500 border-b-1 relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[60vh]">
 
           <BentoCard>
             {/* customizable content */}
-             <div className="h-full w-full pointer-events-none">
+             {/* <div className="h-full w-full pointer-events-none">
                 <h3 className="Globe-Text-top text-5xl font-anton p-5">24/7-H Availability</h3>
               <GridGlobe className="w-full" />
                 <h3 className="Globe-Text-bottom absolute bottom-2 right-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
-             </div>
+             </div> */}
           </BentoCard>
         </BentoTilt>
 
         {/* Grid layout for smaller tiles */}
-        <div className="grid h-[80vh] w-full grid-cols-3 grid-rows-2 gap-7">
+        <div className="grid h-[80vh] w-full grid-cols-3 grid-rows-2 gap-5">
           <BentoTilt className="border-gray-500 border-1  bento-tilt_2 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard>
               {/* customizable content */}
+
+                <div className="flex flex-col items-center justify-center h-full w-full p-1">
+                <BeyondCode />
+
+              </div>
             </BentoCard>
           </BentoTilt>
 
+
           <BentoTilt className="border-gray-500 border-1  bento-tilt_3 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard>
-              <h3>creativity</h3>
+                    {/* changing required */}
+              <div className="w-full h-full relative bg-white/7">
+                <h1 className="creativity-Header p-5 text-2xl absolute font-semibold "> Creativity </h1>
+                <h3 className="creativity-light absolute text-sm p-5 font-semibold opacity-70 translate-x-40 translate-y-13 ">Click Me</h3>
+                  <div className="flex relative justify-center items-center ">
+                    <Image
+                      src={`/images/hang-lamp-100.png`}
+                      alt={`Image Light `}
+                      width={200}
+                      height={10}
+                      className={`-mt-9 overflow-hidden cursor-pointer transition-all duration-300
+                                ${lightOn ? 'opacity-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]' : 'opacity-40'}`}
+                      onClick={toggleLight}
+                    />
+                  </div>
+              </div>
+
             </BentoCard>
           </BentoTilt>
 
           <BentoTilt className="border-gray-500 border-1  bento-tilt_4 me-14 md:col-span-1 md:me-0">
             <BentoCard>
-              <h3>Collaboration</h3>
-              <p className="text-sm">I am a team player who values collaboration and communication.</p>
+              <Collabaration/> {/* content component */}
             </BentoCard>
           </BentoTilt>
 
           <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-2">
             <BentoCard>
-               <h3>Beyond Code - add soft skills section here</h3>
+
+              <div className="h-full w-full pointer-events-none">
+                <h3 className="Globe-Text-top absolute top-0 left-2 text-5xl font-anton z-10 p-5">24/7-H Availability</h3>
+                <video
+                  className="w-full h-full translate-y-5/6 scale-350 "
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="/videos/glob.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <h3 className="Globe-Text-bottom absolute bottom-2 right-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
+             </div>
+
             </BentoCard>
           </BentoTilt>
 

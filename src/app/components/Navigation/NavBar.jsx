@@ -24,7 +24,6 @@ export default function NavBar() {
           <li>Projects</li>
           <li>Skills</li>
           <li>Road Map</li>
-          <li>Services</li>
         </ul>
         <div className='items-center relative '>
           <a className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s]' href=""><span className=' text-xs'>Let's Connect</span></a>

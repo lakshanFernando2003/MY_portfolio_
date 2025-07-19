@@ -4,8 +4,11 @@ import NavBar from "./components/Navigation/NavBar";
 import Hero from "./components/HeroSection/Heromain";
 import About from "./components/About/about";
 import { AboutBentoGrids } from "./components/About/AboutBentoGrids";
+import ProjectSection from "./components/Projects/ProjectSection";
+import Skills from './components/Skills/Skills';
+import RoadMap from './components/RoadMap/RoadMap';
 
-import Lampcontainer from './components/Section Lamps/Lampcontainer';
+
 
 import Customecursor from "./cursor-effect/customecursor";
 import ScrollProvider from "./hooks/ScrollContext";
@@ -34,9 +37,11 @@ export default function Home() {
       <Hero />
       <About />
       <AboutBentoGrids />
+      <ProjectSection />
+      <RoadMap />
+      {/* <Skills /> */}
 
 
-      {/* <Lampcontainer /> */}
 
 
 

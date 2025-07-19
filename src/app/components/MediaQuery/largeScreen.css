@@ -101,6 +101,12 @@
  .Bento-Grids-Header{
   margin-top: -7rem;
  }
+
+ .Bento-Light{
+  transform: translateY(20rem);
+ }
+
+
 }
 
 @media screen and (min-width: 1900px) and (max-width: 2560px) {
@@ -211,10 +217,14 @@
   scale: 120%;
  }
 
-.Globe-container{
-top: 24vh;
+ .Bento-Light{
+  transform: translateY(25rem);
+ }
 
-}
+.Globe-container{
+ top: 24vh;
+
+ }
 
  .Globe{
   height: 130%;
@@ -227,6 +237,36 @@ top: 24vh;
  .Globe-Text-bottom{
   font-size: 4.5rem;
  }
+
+ .Collaberation-Header{
+  font-size: 1.5rem;
+ }
+
+ .Collab-container{
+  margin-top: 4rem;
+  scale: 140%;
+ }
+
+  .Beyond-Code-list{
+    margin-top: 1rem;
+  }
+
+  .creativity-Header{
+    font-size: 1.5rem;
+  }
+
+  .creativity-light{
+    transform: translateY(6rem);
+    transform: translateX(3.5rem);
+  }
+
+  .Projects-Section{
+    margin-top: -7rem;
+  }
+
+  .project-card-container{
+    margin-top: 2rem;
+  }
 }
 
 @media screen and (min-width: 2561px) {
