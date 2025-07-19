@@ -12,56 +12,88 @@ gsap.registerPlugin(ScrollTrigger);
 const roadmapData = [
   {
     id: 1,
-    review: "Started my journey in web development with HTML, CSS, and JavaScript",
+    review: "Developed interest in programming through school projects and self-learning. Started with basic web development and discovered my passion for creating with code.",
     imgPath: "/images/roadmap1.png",
     logoPath: "/images/logo2.png",
-    title: "Web Development Fundamentals",
-    date: "January 2020 - June 2020",
+    title: "High School",
+    date: "2016 - 2020",
     responsibilities: [
-      "Learned HTML5 semantic markup",
-      "Mastered CSS3 including Flexbox and Grid",
-      "Built interactive websites with JavaScript",
+      "Created first HTML/CSS websites",
+      "Learned basic programming concepts",
+      "Participated in school tech competitions",
+      "Explored different areas of computer science"
     ],
   },
   {
     id: 2,
-    review: "Expanded my skills with modern frontend frameworks",
+    review: "Embarked on my journey in computer science at university. Taking courses in programming fundamentals, algorithms, data structures, and exploring different areas of software development.",
     imgPath: "/images/roadmap2.png",
     logoPath: "/images/logo2.png",
-    title: "Frontend Frameworks",
-    date: "July 2020 - December 2020",
+    title: "University Begins",
+    date: "2023 - 2024",
     responsibilities: [
-      "Learned React.js for building dynamic user interfaces",
-      "Implemented responsive designs with Tailwind CSS",
-      "Created single page applications with client-side routing",
+      "Completed core CS coursework",
+      "Learned object-oriented programming principles",
+      "Built small applications as course projects",
+      "Collaborated with peers on group assignments"
     ],
   },
   {
     id: 3,
-    review: "Developed backend skills to become a full-stack developer",
+    review: "Expanding my knowledge through personal projects and coursework. Focusing on web development with React and Next.js while developing a strong foundation in software engineering principles.",
     imgPath: "/images/roadmap3.png",
     logoPath: "/images/logo2.png",
-    title: "Backend Development",
-    date: "January 2021 - June 2021",
+    title: "Learning",
+    date: "2023 - 2024",
     responsibilities: [
-      "Built RESTful APIs with Node.js and Express",
-      "Worked with SQL and NoSQL databases",
-      "Implemented user authentication and authorization",
+      "Mastered React.js fundamentals",
+      "Developed fullstack applications with Next.js",
+      "Created responsive user interfaces with modern CSS",
+      "Implemented backend functionality with Node.js"
     ],
   },
   {
     id: 4,
-    review: "Focused on DevOps and deployment strategies",
+    review: "Currently looking for internship opportunities to gain real-world experience in software development. Polishing my portfolio and enhancing my skills to prepare for the professional world.",
     imgPath: "/images/roadmap3.png",
     logoPath: "/images/logo2.png",
-    title: "DevOps & Deployment",
-    date: "July 2021 - December 2021",
+    title: "Current",
+    date: "2025 - Present",
     responsibilities: [
-      "Set up CI/CD pipelines using GitHub Actions",
-      "Deployed applications using Docker containers",
-      "Implemented cloud infrastructure on AWS",
+      "Building comprehensive portfolio projects",
+      "Contributing to open-source repositories",
+      "Networking with industry professionals",
+      "Learning industry-standard development practices"
     ],
   },
+  {
+    id: 5,
+    review: "Aiming to secure an internship or junior role where I can apply my skills, learn from experienced professionals, and contribute to meaningful projects in a team environment.",
+    imgPath: "/images/roadmap2.png",
+    logoPath: "/images/logo2.png",
+    title: "Near Future",
+    date: "2025 - Present",
+    responsibilities: [
+      "Apply theoretical knowledge in practical settings",
+      "Learn industry workflows and collaboration tools",
+      "Contribute to production-level applications",
+      "Receive mentorship from senior developers"
+    ],
+  },
+  // {
+  //   id: 6,
+  //   review: "After graduation, my goal is to become a professional software engineer, specializing in modern web technologies and contributing to innovative projects that make a positive impact.",
+  //   imgPath: "/images/roadmap1.png",
+  //   logoPath: "/images/logo2.png",
+  //   title: "Future Plans",
+  //   date: "2024 and Beyond",
+  //   responsibilities: [
+  //     "Work as a professional software engineer",
+  //     "Specialize in modern web development",
+  //     "Contribute to innovative tech solutions",
+  //     "Eventually mentor new developers and give back to the community"
+  //   ],
+  // }
 ];
 
 // GlowCard component for roadmap items
