@@ -167,7 +167,8 @@ export default function RoadMap() {
       scrollTrigger: {
         trigger: ".timeline",
         start: "top center",
-        end: "70% center",
+        end: "90% center",
+        markers: true,
         onUpdate: (self) => {
           gsap.to(".timeline", {
             scaleY: 1 - self.progress,
