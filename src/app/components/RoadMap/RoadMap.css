@@ -1,7 +1,6 @@
 .card {
   --start: 0;
   position: relative;
-  z-index: 40;
   overflow: hidden;
   transition: border-color 1s ease-in-out;
 }

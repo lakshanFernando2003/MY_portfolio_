@@ -395,12 +395,12 @@ const GridGlobe = () => {
 
   return (
 
-    <div className="flex items-center justify-center absolute top-36 md:top-40 w-full h-full">
+    <div className="flex items-center justify-center absolute w-full h-full">
 
-      <div className="Globe-container mx-auto w-full relative overflow-hidden h-[1500px] top-[45vh] ">
+      <div className="Globe-container w-full relative overflow-visible h-full items-center justify-center flex">
         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
         {/* remove -bottom-20 */}
-        <div className="Globe absolute w-full h-[100%] z-[10] ">
+        <div className="Globe absolute z-[10] h-[100%] w-full">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>

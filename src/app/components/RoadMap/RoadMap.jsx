@@ -127,7 +127,7 @@ const GlowCard = ({ card, index, children }) => {
     <div
       ref={(el) => (cardRefs.current[index] = el)}
       onMouseMove={handleMouseMove(index)}
-      className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column"
+      className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column -z-10"
     >
       <div className="glow"></div>
       <div className="flex items-center gap-1 mb-5">
@@ -216,7 +216,7 @@ export default function RoadMap() {
 
         <div className="mt-32 relative mx-auto max-w-8xl">
           {/* Combined structure with conditional rendering based on ID */}
-          <div className="relative z-50 xl:space-y-32 space-y-10">
+          <div className="relative z-40 xl:space-y-32 space-y-10">
             {roadmapData.map((card) => (
               <div key={card.title + card.id} className="exp-card-wrapper">
                 {card.id % 2 === 1 ? (

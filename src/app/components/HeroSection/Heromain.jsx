@@ -37,7 +37,7 @@ export default function Heromain() {
       </div>
 
         <div className='reactive-Orb-container relative w-full h-screen z-[1]'>
-          <ReactiveOrb/>
+          {/* <ReactiveOrb/> */}
         </div>
 
       <div className='Lamp-container'>

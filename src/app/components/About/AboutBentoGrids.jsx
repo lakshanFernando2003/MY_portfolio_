@@ -125,7 +125,7 @@ export const AboutBentoGrids = () => {
           <BentoTilt className="border-gray-500 border-1  bento-tilt_3 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard>
                     {/* changing required */}
-              <div className="w-full h-full relative bg-white/7">
+              {/* <div className="w-full h-full relative bg-white/7">
                 <h1 className="creativity-Header p-5 text-2xl absolute font-semibold "> Creativity </h1>
                 <h3 className="creativity-light absolute text-sm p-5 font-semibold opacity-70 translate-x-40 translate-y-13 ">Click Me</h3>
                   <div className="flex relative justify-center items-center ">
@@ -139,7 +139,13 @@ export const AboutBentoGrids = () => {
                       onClick={toggleLight}
                     />
                   </div>
-              </div>
+              </div> */}
+
+              <div className="h-full w-full pointer-events-none">
+                <h3 className="Globe-Text-top text-5xl font-anton p-5">24/7-H Availability</h3>
+              <GridGlobe className="w-full" />
+                <h3 className="Globe-Text-bottom absolute text-left bottom-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
+             </div>
 
             </BentoCard>
           </BentoTilt>
@@ -153,7 +159,7 @@ export const AboutBentoGrids = () => {
           <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-2">
             <BentoCard>
 
-              <div className="h-full w-full pointer-events-none">
+              {/* <div className="h-full w-full pointer-events-none">
                 <h3 className="Globe-Text-top absolute top-0 left-2 text-5xl font-anton z-10 p-5">24/7-H Availability</h3>
                 <video
                   className="w-full h-full translate-y-5/6 scale-350 "
@@ -166,7 +172,7 @@ export const AboutBentoGrids = () => {
                   Your browser does not support the video tag.
                 </video>
                 <h3 className="Globe-Text-bottom absolute bottom-2 right-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
-             </div>
+             </div> */}
 
             </BentoCard>
           </BentoTilt>
