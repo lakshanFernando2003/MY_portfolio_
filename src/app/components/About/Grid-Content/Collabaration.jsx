@@ -42,86 +42,168 @@ export default function Collabaration() {
       designation: "Project Manager",
       image: "https://i.pravatar.cc/100?img=5",
     },
-
   ];
 
   return (
-    <div className='h-full p-5 flex flex-col gap-3 backdrop-blur-md bg-white/5 rounded-lg transition-all duration-300 hover:bg-white/7' >
-        <h3 className='Collaberation-Header font-semibold  '>Collaboration</h3>
-        <p className="text-sm hover:text-gray-200 transition-colors duration-300">I values team work and equally respect each member's opinion's and advises while holding responsible for my workload.</p>
+    <motion.div
+      initial={{ opacity: 0.9 }}
+      whileHover={{ opacity: 1 }}
+      className="h-full flex flex-col gap-4 backdrop-blur-lg bg-gradient-to-br from-white/8 to-white/3 rounded-xl border border-white/10 shadow-xl transition-all duration-300 overflow-hidden"
+    >
+      {/* Animated background elements */}
+      <motion.div
+        className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"
+        animate={{
+          x: [0, 10, 0],
+          y: [0, -10, 0],
+          opacity: [0.5, 0.8, 0.5],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-        <div className="Collab-container flex flex-row items-center justify-center mt-5 -ml-3 w-full px-4 sm:px-6 md:px-8 bg-white/10 ml-[0.1rem]">
-          <AnimatedTooltip items={collaborators} />
+      <div className="relative z-10 p-6 flex flex-col h-full">
+        {/* Header with animated underline */}
+        <div className="mb-3">
+          <motion.h3
+            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300"
+            initial={{ y: -20 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            Collaboration
+          </motion.h3>
+          <motion.div
+            className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 80, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          />
         </div>
-    </div>
-  )
+
+        <motion.p
+          className="text-sm text-gray-300/90 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          I value teamwork and equally respect each member's opinions and advice
+          while taking full responsibility for my workload and deliverables.
+        </motion.p>
+
+        {/* Team section with improved styling */}
+        <motion.div
+          className="mt-auto pt-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="text-xs uppercase tracking-wider text-gray-400 mb-3 font-medium">
+            Team Members
+          </div>
+          <div className="Collab-container flex flex-row items-center justify-center py-3 px-2 rounded-xl bg-white/5 backdrop-blur-sm">
+            <AnimatedTooltip items={collaborators} />
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
 }
 
-
-
-export const AnimatedTooltip = ({
-  items
-}) => {
+export const AnimatedTooltip = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const springConfig = { stiffness: 100, damping: 5 };
-  const x = useMotionValue(0); // going to set this value on mouse move
-  // rotate the tooltip
-  const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
-  // translate the tooltip
-  const translateX = useSpring(useTransform(x, [-100, 100], [-50, 50]), springConfig);
+  const springConfig = { stiffness: 150, damping: 15 };
+  const x = useMotionValue(0);
+
+  // Enhanced animations
+  const rotate = useSpring(useTransform(x, [-100, 100], [-25, 25]), springConfig);
+  const translateX = useSpring(useTransform(x, [-100, 100], [-25, 25]), springConfig);
+  const scale = useSpring(useTransform(x, [-100, 100], [0.9, 1.1]), springConfig);
+
   const handleMouseMove = (event) => {
     const halfWidth = event.target.offsetWidth / 2;
-    x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
+    x.set(event.nativeEvent.offsetX - halfWidth);
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-full -ml-5">
-      {items.map((item, idx) => (
-        <div
-          className="group relative -mr-6"
+    <div className="flex items-center justify-center w-full">
+      {items.map((item) => (
+        <motion.div
+          className="group relative -mr-4 first:ml-0"
           key={item.name}
+          initial={{ scale: 0.9, opacity: 0.8 }}
+          whileHover={{
+            scale: 1.05,
+            opacity: 1,
+            zIndex: 20,
+            transition: { duration: 0.2 },
+          }}
           onMouseEnter={() => setHoveredIndex(item.id)}
-          onMouseLeave={() => setHoveredIndex(null)}>
-          <AnimatePresence mode="popLayout">
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          <AnimatePresence>
             {hoveredIndex === item.id && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
                   opacity: 1,
-                  y: 0,
+                  y: -5,
                   scale: 1,
                   transition: {
                     type: "spring",
                     stiffness: 260,
-                    damping: 10,
+                    damping: 20,
                   },
                 }}
-                exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                exit={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.6,
+                  transition: { duration: 0.2 },
+                }}
                 style={{
                   translateX: translateX,
                   rotate: rotate,
                   whiteSpace: "nowrap",
                 }}
-                className="absolute -top-20 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-6 py-3 text-sm shadow-xl">
-                <div
-                  className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-                <div
-                  className="absolute -bottom-px left-10 z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
-                <div className="relative z-30 text-lg font-bold text-white">
+                className="absolute -top-20 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-xl bg-gradient-to-br from-gray-900 to-black border border-white/10 px-4 py-2 shadow-xl"
+              >
+                {/* Enhanced tooltip design */}
+                <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+                <div className="absolute -bottom-px left-10 z-30 h-px w-[60%] bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+
+                <div className="relative z-30 text-lg font-bold text-white mb-0.5">
                   {item.name}
                 </div>
-                <div className="text-sm text-white">{item.designation}</div>
+                <div className="text-sm text-gray-300">{item.designation}</div>
+
+                {/* Triangle pointer */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 border-t-8 border-l-8 border-r-8 border-t-black border-l-transparent border-r-transparent" />
               </motion.div>
             )}
           </AnimatePresence>
-          <img
-            onMouseMove={handleMouseMove}
-            height={120}
-            width={120}
-            src={item.image}
-            alt={item.name}
-            className="relative !m-0 h-20 w-20 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-120" />
-        </div>
+
+          {/* Enhanced avatar */}
+          <motion.div
+            className="relative rounded-full overflow-hidden border-2 border-white/30 group-hover:border-purple-400/70 transition-all duration-300"
+            style={{ scale }}
+          >
+            <img
+              onMouseMove={handleMouseMove}
+              height={100}
+              width={100}
+              src={item.image}
+              alt={item.name}
+              className="h-16 w-16 object-cover transition-all duration-300 group-hover:brightness-110"
+            />
+
+            {/* Glow effect on hover */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-tr from-purple-500/0 to-blue-500/0 opacity-0 group-hover:opacity-30"
+              whileHover={{ opacity: 0.3 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        </motion.div>
       ))}
     </div>
   );

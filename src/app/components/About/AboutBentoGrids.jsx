@@ -8,6 +8,7 @@ import AnimateLamp from "../Section Lamps/AnimateLamp";
 import GridGlobe from "./Grid-Content/GridGlobe";
 import Collabaration from "./Grid-Content/Collabaration";
 import BeyondCode from "./Grid-Content/BeyondCode";
+import CommingSoon from "./Grid-Content/CommingSoon";
 import "../MediaQuery/largeScreen.css"
 
 
@@ -96,27 +97,29 @@ export const AboutBentoGrids = () => {
 
       <div className=" w-[90vw] mt-15 mb-10 mx-auto px-3 md:px-10 z-40">
         {/* Main large bento tile */}
-        <BentoTilt className="border-gray-500 border-b-1 relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[60vh]">
+        <div className="relative h-96 w-full mb-7 grid grid-cols-2 grid-rows-1 gap-3 ">
 
-          <BentoCard>
-            {/* customizable content */}
-             {/* <div className="h-full w-full pointer-events-none">
-                <h3 className="Globe-Text-top text-5xl font-anton p-5">24/7-H Availability</h3>
-              <GridGlobe className="w-full" />
-                <h3 className="Globe-Text-bottom absolute bottom-2 right-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
-             </div> */}
-          </BentoCard>
-        </BentoTilt>
+        <BentoTilt className="border-gray-500 border-1 me-14 md:col-span-1 md:me-0">
+            <BentoCard>
+                <CommingSoon />
+            </BentoCard>
+          </BentoTilt>
+
+          <BentoTilt className="border-gray-500 border-1 me-14 md:col-span-1 md:me-0">
+            <BentoCard>
+              <CommingSoon />
+            </BentoCard>
+          </BentoTilt>
+
+        </div>
 
         {/* Grid layout for smaller tiles */}
         <div className="grid h-[80vh] w-full grid-cols-3 grid-rows-2 gap-5">
-          <BentoTilt className="border-gray-500 border-1  bento-tilt_2 row-span-1 md:col-span-1 md:row-span-2">
+          <BentoTilt className="row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard>
               {/* customizable content */}
-
-                <div className="flex flex-col items-center justify-center h-full w-full p-1">
+                <div className="flex flex-col items-center justify-center h-full w-full p-1 ">
                 <BeyondCode />
-
               </div>
             </BentoCard>
           </BentoTilt>
@@ -150,7 +153,7 @@ export const AboutBentoGrids = () => {
             </BentoCard>
           </BentoTilt>
 
-          <BentoTilt className="border-gray-500 border-1  bento-tilt_4 me-14 md:col-span-1 md:me-0">
+          <BentoTilt className="border-gray-500 border-0 bento-tilt_4 me-14 md:col-span-1 md:me-0">
             <BentoCard>
               <Collabaration/> {/* content component */}
             </BentoCard>
@@ -158,22 +161,7 @@ export const AboutBentoGrids = () => {
 
           <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-2">
             <BentoCard>
-
-              {/* <div className="h-full w-full pointer-events-none">
-                <h3 className="Globe-Text-top absolute top-0 left-2 text-5xl font-anton z-10 p-5">24/7-H Availability</h3>
-                <video
-                  className="w-full h-full translate-y-5/6 scale-350 "
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source src="/videos/glob.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <h3 className="Globe-Text-bottom absolute bottom-2 right-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
-             </div> */}
-
+                <CommingSoon />
             </BentoCard>
           </BentoTilt>
 

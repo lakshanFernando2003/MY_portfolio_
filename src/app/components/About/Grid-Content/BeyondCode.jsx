@@ -151,7 +151,7 @@ export default function BeyondCode() {
 
   return (
     <div
-      className="relative w-full h-full overflow-hidden backdrop-blur-md bg-white/5 rounded-lg transition-all duration-300"
+      className="relative w-full h-full overflow-hidden backdrop-blur-md bg-white/1 rounded-lg transition-all duration-300"
       ref={containerRef}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -206,7 +206,7 @@ export default function BeyondCode() {
               >
                 {/* Background Image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center rounded-lg"
+                  className="absolute inset-0 bg-cover bg-center rounded-full"
                   style={{
                     backgroundImage: `url(${interest.image})`,
                   }}
@@ -214,7 +214,7 @@ export default function BeyondCode() {
 
                 {/* Colored Overlay with Icon (visible by default) */}
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center transition-all duration-500"
+                  className="absolute inset-0 flex items-center justify-center transition-all rounded-full duration-500"
                   initial={overlayVariants[variantIndex].initial}
                   animate={hoverStates[idx] ? overlayVariants[variantIndex].hover : overlayVariants[variantIndex].initial}
                 >
@@ -250,7 +250,7 @@ export default function BeyondCode() {
         </motion.div>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 z-30">
+        {/* <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 z-30">
           {interests.map((_, idx) => (
             <button
               key={idx}
@@ -260,7 +260,7 @@ export default function BeyondCode() {
               }`}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Gradient edges for visual effect */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-[50px] bg-gradient-to-r from-black/30 to-transparent z-20" />
