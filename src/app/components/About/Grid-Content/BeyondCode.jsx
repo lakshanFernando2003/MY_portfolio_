@@ -172,7 +172,7 @@ export default function BeyondCode() {
       </div>
 
       {/* Carousel Container with p-2 */}
-      <div className="relative h-[calc(100%-100px)] w-full overflow-hidden p-10">
+      <div className="relative h-[calc(100%-100px)] w-full overflow-hidden rounded-lg p-10">
         <motion.div
           drag="x"
           dragConstraints={{
@@ -187,7 +187,7 @@ export default function BeyondCode() {
           }}
           transition={SPRING_OPTIONS}
           onDragEnd={onDragEnd}
-          className="flex h-full cursor-grab active:cursor-grabbing"
+          className="flex h-full cursor-grab active:cursor-grabbing -rotate-45"
         >
           {interests.map((interest, idx) => {
             // Randomly select overlay animation variant
@@ -196,7 +196,7 @@ export default function BeyondCode() {
             return (
               <motion.div
                 key={idx}
-                className="relative w-full h-full shrink-0"
+                className="relative w-full h-full shrink-0 "
                 animate={{
                   scale: itemIndex === idx ? 1 : 0.9,
                 }}
@@ -206,7 +206,7 @@ export default function BeyondCode() {
               >
                 {/* Background Image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center rounded-full"
+                  className="absolute inset-0 bg-cover bg-center rounded-full rotate-45"
                   style={{
                     backgroundImage: `url(${interest.image})`,
                   }}
@@ -220,7 +220,7 @@ export default function BeyondCode() {
                 >
                   <interest.icon
                     size="5em"
-                    className="drop-shadow-lg"
+                    className="drop-shadow-lg rotate-45"
                     style={{
                       color: interest.iconColor,
                       filter: "drop-shadow(0px 0px 8px rgba(0,0,0,0.5))"
@@ -232,13 +232,13 @@ export default function BeyondCode() {
                 <AnimatePresence>
                   {hoverStates[idx] && (
                     <motion.div
-                      className="absolute bottom-6 left-0 right-0 flex justify-center"
+                      className="absolute bottom-6 left-0 right-0 flex justify-center "
                       variants={textVariants}
                       initial="hidden"
                       animate="visible"
                       exit="hidden"
                     >
-                      <div className={`${interest.bgColor} text-black font-semibold px-6 py-2 rounded-full text-lg shadow-lg`}>
+                      <div className={`${interest.bgColor} text-black font-semibold px-6 py-2 rotate-45 rounded-full text-lg shadow-lg`}>
                         {interest.label}
                       </div>
                     </motion.div>
