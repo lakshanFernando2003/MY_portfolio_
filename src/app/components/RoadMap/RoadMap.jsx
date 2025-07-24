@@ -47,7 +47,7 @@ const roadmapData = [
     date: "2023 - 2024",
     responsibilities: [
       "Mastered React.js fundamentals",
-      "Developed fullstack applications with Next.js",
+      "Developed fullstack applications with React.js",
       "Created responsive user interfaces with modern CSS",
       "Implemented backend functionality with Node.js"
     ],
