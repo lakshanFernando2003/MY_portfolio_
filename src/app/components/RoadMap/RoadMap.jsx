@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import './RoadMap.css';
+import AnimateLamp from '../Section Lamps/AnimateLamp';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -144,6 +145,7 @@ const GlowCard = ({ card, index, children }) => {
 };
 
 export default function RoadMap() {
+  const sectionEndRef = useRef(null);
   useGSAP(() => {
     // Loop through each timeline card and animate them in
     gsap.utils.toArray(".timeline-card").forEach((card) => {
@@ -208,7 +210,23 @@ export default function RoadMap() {
 
   return (
     <section id="roadmap" className="flex-center md:mt-40 mt-20 section-padding xl:px-0">
-      <div className="w-full h-full md:px-20 px-5">
+      <div className="w-full h-[30vh] overflow-hidden -mt-40">
+              {/* Section lamp Header */}
+              <AnimateLamp
+                className="m-1"
+                lightClassName=""
+                beamClassName=""
+                lightColor="#5DBB99"
+                lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
+                beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
+                lightOpacity={0.5}
+                lightBlur="blur-[48px]"
+                enableStickyEffect={true}
+                endTarget={sectionEndRef}
+              />
+            </div>
+
+      <div className="w-full h-full md:px-20 px-5 -mt-35">
         <div className="mb-10 text-center mx-auto max-w-3xl">
           <h2 className="text-4xl font-bold mb-2">My Development Journey</h2>
           <p className="text-white-50">🗺️ Career Roadmap and Milestones</p>
@@ -309,6 +327,8 @@ export default function RoadMap() {
           </div>
         </div>
       </div>
+
+      <div ref={sectionEndRef}></div>
     </section>
   );
 }

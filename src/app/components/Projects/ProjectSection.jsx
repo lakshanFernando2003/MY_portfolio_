@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import AnimateLamp from "../Section Lamps/AnimateLamp";
 import "../MediaQuery/largeScreen.css";
 import gsap from "gsap";
@@ -6,8 +6,148 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import BentoCard from "../About/BentoCard";
+import { motion } from "framer-motion";
+import BubbleBackground from '../Animations/BubbleBackground';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Web Projects data array - replacing with the provided project details
+const webProjects = [
+
+  {
+    id: 1,
+    type: "web",
+    language: "React",
+    name: "Centralized Competition Platform",
+    description: "Online platform for students, organizers and companies to host, discover, track, and manage IT hackathons with automatic portfolio generation.",
+    source: "#",
+    bgColor: "bg-purple-500/20",
+    textColor: "text-purple-400",
+    bgImage: "/images/projects/Skillforge.png",
+    highlight: "Competition"
+  },
+  {
+    id: 2,
+    type: "web",
+    language: "React",
+    name: "Real Estate Marketplace",
+    description: "Online platform for selling and renting real-estate with advanced search functionality, Google Maps API integration, and robust security measures.",
+    source: "#",
+    bgColor: "bg-green-500/20",
+    textColor: "text-green-400",
+    bgImage: "/images/projects/Renthouse.png",
+    highlight: "Estate"
+  },
+  {
+    id: 3,
+    type: "web",
+    language: "Html",
+    name: "UNSDG Green Constructions",
+    description: "Platform promoting sustainable inventions and providing newsletters with trends and guides for environmentally friendly construction practices.",
+    source: "#",
+    bgColor: "bg-amber-500/20",
+    textColor: "text-amber-400",
+    bgImage: "/images/projects/GreenCity.png",
+    highlight: "Green"
+  }
+];
+
+// Other Projects data array with provided data
+const otherProjects = [
+  {
+    id: 1,
+    type: "desktop",
+    language: "Python",
+    name: "Student-progression-system",
+    description: "A simple python project. This project is about Students progression monitoring System.",
+    source: "https://github.com/lakshanFernando2003/Student-progression-system.git",
+    bgColor: "bg-teal-500/20",
+    textColor: "text-teal-400",
+    bgImage: "/images/projects/python-bg.png"
+  },
+  {
+    id: 2,
+    type: "desktop",
+    language: "Java",
+    name: "Plane-Ticket-purchasing-System",
+    description: "This is my first java project done based on a air ticket buying system.",
+    source: "https://github.com/lakshanFernando2003/Plane-Ticket-purchasing-System.git",
+    bgColor: "bg-orange-500/20",
+    textColor: "text-orange-400",
+    bgImage: "/images/projects/airline_ticketing_system_software.jpg"
+  },
+  {
+    id: 3,
+    type: "mobile",
+    language: "Kotlin",
+    name: "Dice Game",
+    description: "This is my first mobile project done with kotlin to gain experience and assist a colleague in their assignment.",
+    source: "",
+    bgColor: "bg-red-500/20",
+    textColor: "text-red-400",
+    bgImage: "/images/projects/DiceGAme.webp"
+  },
+  {
+    id: 4,
+    type: "api",
+    language: "Java",
+    name: "BookStore Application API",
+    description: "A BookStore that containes eBooks which can be purchased by customers.",
+    source: "",
+    bgColor: "bg-cyan-500/20",
+    textColor: "text-cyan-400",
+    bgImage: "/images/projects/BookStore.jpeg"
+  }
+];
+
+// Bubble Background Component for horizontal section
+// const BubblesBackground = ({ count = 20 }) => {
+//   const [bubbles, setBubbles] = useState([]);
+
+//   useEffect(() => {
+//     // Generate random bubbles on component mount
+//     const newBubbles = Array.from({ length: count }).map((_, i) => ({
+//       id: i,
+//       x: Math.random() * 100, // random x position (%)
+//       y: Math.random() * 100, // random y position (%)
+//       size: Math.random() * 60 + 20, // random size between 20-80px
+//       duration: Math.random() * 20 + 10, // animation duration between 10-30s
+//       delay: Math.random() * 5, // random delay for animation start
+//     }));
+
+//     setBubbles(newBubbles);
+//   }, [count]);
+
+//   return (
+//     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+//       {bubbles.map(bubble => (
+//         <motion.div
+//           key={bubble.id}
+//           className="absolute rounded-full bg-amber-400/10 backdrop-blur-sm border border-amber-400/30"
+//           style={{
+//             left: `${bubble.x}%`,
+//             top: `${bubble.y}%`,
+//             width: bubble.size,
+//             height: bubble.size,
+//           }}
+//           initial={{ opacity: 0, scale: 0 }}
+//           animate={{
+//             opacity: [0.1, 0.3, 0.1],
+//             scale: [1, 1.2, 1],
+//             x: [0, bubble.size * (Math.random() > 0.5 ? 1 : -1), 0],
+//             y: [0, bubble.size * (Math.random() > 0.5 ? 1 : -1), 0],
+//           }}
+//           transition={{
+//             duration: bubble.duration,
+//             repeat: Infinity,
+//             delay: bubble.delay,
+//             ease: "easeInOut",
+//           }}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
 export default function ProjectSection() {
   const sectionEndRef = useRef(null);
@@ -96,43 +236,68 @@ export default function ProjectSection() {
     };
   }, []);
 
+  // Helper function to get GitHub icon or coming soon badge
+  const getSourceElement = (project) => {
+    if (project.source) {
+      return (
+        <a href={project.source} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
+          View on GitHub
+          <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      );
+    } else {
+      return (
+        <span className="text-sm text-amber-400 flex items-center gap-2">
+          Coming Soon
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      );
+    }
+  };
+
   const projects = [
     {
       id: 1,
-      title: "Animated Gaming Website",
-      highlight: "Gaming",
-      description: "A dynamic website featuring WebGL animations, responsive design, and immersive user interactions for a gaming studio showcase.",
-      image: "/project-1.jpg"
+      title: "Skill Forge Marketing Webpage",
+      highlight: "Forge",
+      description: "Dynamic marketing webpage built with Next.js, TypeScript and Framer Motion, delivering engaging interactive user experiences and animations.",
+      image: "/images/projects/skillfirgemarketing.png",
+      comingSoon: false
     },
     {
       id: 2,
-      title: "Modern Portfolio Website",
-      highlight: "Portfolio",
-      description: "A minimalist yet feature-rich portfolio designed for creatives with interactive elements and optimized performance metrics.",
-      image: "/project-2.jpg"
+      title: "Centralized Competition Platform",
+      highlight: "Competition",
+      description: "Online platform for students, organizers and companies to host, discover, track, and manage IT hackathons with automatic portfolio generation.",
+      image: "/images/projects/Skillforge.png",
+      comingSoon: true
     },
-    {
-      id: 3,
-      title: "Movie Landing Page",
-      highlight: "Landing",
-      description: "A cinematic landing page with parallax effects, video integration, and audience engagement features for film promotion.",
-      image: "/project-3.jpg"
-    },
-    {
-      id: 4,
-      title: "E-commerce Platform",
-      highlight: "Commerce",
-      description: "A full-featured online store with cart functionality, payment processing, and responsive product galleries for an optimal shopping experience.",
-      image: "/project-4.jpg"
-    }
+    // {
+    //   id: 3,
+    //   title: "Real Estate Marketplace",
+    //   highlight: "Estate",
+    //   description: "Online platform for selling and renting real-estate with advanced search functionality, Google Maps API integration, and robust security measures.",
+    //   image: "/images/projects/Renthouse.png",
+    //   comingSoon: true
+    // },
+    // {
+    //   id: 4,
+    //   title: "UNSDG Green Constructions",
+    //   highlight: "Green",
+    //   description: "Platform promoting sustainable inventions and providing newsletters with trends and guides for environmentally friendly construction practices.",
+    //   image: "/images/projects/GreenCity.png",
+    //   comingSoon: true
+    // }
   ];
 
   return (
-    <div className='bg-neutral-900 w-full min-h-screen' id="projects">
+    <div className='bg-neutral-950 w-full min-h-screen' id="projects">
       <div className="w-full h-[30vh] overflow-hidden">
         {/* Section lamp Header */}
         <AnimateLamp
-          className="m-1 "
+          className="m-1 z-10"
           lightClassName="Project-Lamp"
           beamClassName="Project-Lamp-beam"
           lightColor="#E1B800"
@@ -167,7 +332,7 @@ export default function ProjectSection() {
         </div>
       </div>
 
-      <div className="h-[80vh] w-screen" id="project-container" ref={projectContainerRef}>
+      <div className="h-[80vh] w-screen z-20" id="project-container" ref={projectContainerRef}>
         <div
           ref={projectComponentRef}
           className="project-animated-component bg-neutral-800 w-[600px] h-[600px] mx-auto rounded-lg overflow-hidden relative "
@@ -196,31 +361,56 @@ export default function ProjectSection() {
       </div>
 
 
-      <div ref={horizontalRef} className="w-full h-auto flex flex-col justify-center items-center text-white pt-8 ">
-          <div className="mt-14 text-center">
+      <div ref={horizontalRef} className="w-full h-auto flex flex-col justify-center items-center text-white pt-8 relative ">
+          {/* Add the bubbles background */}
+          {/* <BubblesBackground count={30} /> */}
+            {/* Add the advanced bubbles background */}
+               <BubbleBackground
+                  count={35}
+                  color="amber"
+                  intensity="veryStrong"
+                  interactive={true}
+                  colorChangeInterval={5000}
+                  mouseAreaRadius={200}
+                  showMouseArea={false}
+                  globalMovementFactor={1}  // Adjust global movement strength (0 to disable)
+                  randomMovement={true}       // Enable/disable random floating animation
+                />
+
+          <div className="mt-14 text-center relative z-20">
             <h2 className="text-4xl uppercase tracking-wider font-semibold mb-3 font-mono">Recent Work</h2>
           </div>
 
           {/* Horizontal scrolling projects section */}
-          <div  className="project-card-container  relative w-full overflow-hidden backdrop-blur-md bg-neutral-950/40 p-1  ">
+          <div className="border-0 project-card-container relative w-full bg-transparent backdrop-blur-sm overflow-hidden  p-1 z-10">
             <div ref={projectsRef} className="flex items-center justify-start gap-12 py-6" style={{ width: `${projects.length * 100 + 60}vw ` }}>
               {projects.map((project, index) => (
-                <div key={project.id} className="project-card min-h-[600px] flex flex-col md:flex-row items-center justify-center gap-8 px-8 mx-auto">
-                  <div className="project-vidbox w-full md:w-3/5 relative overflow-hidden rounded-2xl group">
-                    <div className="aspect-[16/10] bg-neutral-800 shadow-lg shadow-blue-500/10 rounded-2xl overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={1200}
-                        height={750}
-                        className="object-cover w-full h-full rounded-2xl transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-70"></div>
-                      <div className="hover-sign absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-16 h-16 bg-blue-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
-                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l5-5m0 0l-5-5m5 5H4" />
-                          </svg>
+                <div key={project.id} className=" border-0 project-card min-h-[600px] flex flex-col md:flex-row items-center justify-center gap-8 px-8 mx-auto">
+                  <div className="project-vidbox w-[600px] h-[380px] relative overflow-hidden rounded-2xl group flex-shrink-0">
+                    <div className="w-full h-full bg-neutral-800 shadow-lg shadow-blue-500/10 rounded-2xl overflow-hidden">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 600px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-70"></div>
+
+                        {/* Coming Soon Badge */}
+                        {project.comingSoon && (
+                          <div className="absolute top-4 right-4 bg-amber-500/80 text-black font-semibold px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                            Coming Soon
+                          </div>
+                        )}
+
+                        <div className="hover-sign absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="w-16 h-16 bg-blue-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l5-5m0 0l-5-5m5 5H4" />
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -237,9 +427,22 @@ export default function ProjectSection() {
                       )}
                     </h2>
                     <p className="text-xl text-gray-300 mb-10 leading-relaxed">{project.description}</p>
-                    <a href="#" className="flex items-center gap-2 w-fit px-8 py-4 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 transition-all duration-300 group">
-                      <span className="text-lg">View Project</span>
-                      <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
+                    <a
+                      href="#"
+                      className={`flex items-center gap-2 w-fit px-8 py-4 rounded-lg ${
+                        project.comingSoon
+                          ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20'
+                          : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20'
+                      } transition-all duration-300 group`}
+                    >
+                      <span className="text-lg">{project.comingSoon ? 'Coming Soon' : 'View Project'}</span>
+                      {project.comingSoon ? (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      ) : (
+                        <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
+                      )}
                     </a>
                   </div>
                 </div>
@@ -248,163 +451,100 @@ export default function ProjectSection() {
           </div>
         </div>
 
-        <div className="w-full py-10 px-6 md:px-12 bg-neutral-950">
+      <div className="relative w-full py-10 px-6 md:px-12 bg-neutral-950">
           {/* Web Projects Section */}
           <div className="max-w-8xl mx-auto mb-16">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-3xl font-bold text-white">Web Projects</h2>
-              <a href="#" className="group flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+              <a href="#" className="group flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
                 <span>All web projects</span>
                 <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Web Project Card 1 */}
-              <BentoCard className="bg-neutral-800/50 h-[300px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded">React</span>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10">
+              {webProjects.map((project) => (
+                <BentoCard
+                  key={project.id}
+                  className={`bg-neutral-800/50 h-[300px] p-6 backdrop-blur-sm border border-neutral-700/30 transition-all duration-300 hover:border-${project.textColor.split('-')[1]}-500/50 hover:shadow-md hover:shadow-${project.textColor.split('-')[1]}-500/10 relative overflow-hidden`}
+                >
+                  {/* Add background image with overlay */}
+                  <div className="absolute inset-0 -z-10">
+                    <Image
+                      src={project.bgImage}
+                      alt={project.name}
+                      fill
+                      className="object-cover opacity-50"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-900/90 to-neutral-800/70"></div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">E-commerce Platform</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Modern shopping experience with cart functionality and responsive design.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
 
-              {/* Web Project Card 2 */}
-              <BentoCard className="bg-neutral-800/50 h-[300px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded">Next.js</span>
+                  <div className="flex flex-col h-full relative">
+                    <div className="mb-4">
+                      <span className={`${project.bgColor} ${project.textColor} text-xs px-2 py-1 rounded`}>
+                        {project.language}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+                    <p className="text-gray-400 text-sm flex-grow">{project.description}</p>
+                    <div className="mt-auto pt-4">
+                      <a href={project.source} className="text-sm text-blue-400 hover:underline flex items-center gap-2">
+                        View details
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Portfolio Website</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Interactive portfolio with animations and advanced UI effects.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
-
-              {/* Web Project Card 3 */}
-              <BentoCard className="bg-neutral-800/50 h-[300px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Vue.js</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Dashboard Application</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Data visualization and analytics dashboard with real-time updates.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
+                </BentoCard>
+              ))}
             </div>
           </div>
 
           {/* Other Projects Section */}
-          <div className="max-w-8xl mx-auto">
+          <div className="max-w-8xl mx-auto z-60">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-3xl font-bold text-white">Other Projects</h2>
-              <a href="#" className="group flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+              <a href="#" className="group flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
                 <span>All projects</span>
                 <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Other Project Card 1 */}
-              <BentoCard className="bg-neutral-800/50 h-[250px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-red-500/20 text-red-400 text-xs px-2 py-1 rounded">Mobile</span>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 z-10">
+              {otherProjects.map((project) => (
+                <BentoCard
+                  key={project.id}
+                  className={`bg-neutral-800/50 h-[250px] p-6 backdrop-blur-sm border border-neutral-700/30 transition-all duration-300 hover:border-${project.textColor.split('-')[1]}-500/50 hover:shadow-sm hover:shadow-${project.textColor.split('-')[1]}-500/20 relative overflow-hidden`}
+                >
+                  {/* Add background image with overlay */}
+                  <div className="absolute inset-0 -z-10">
+                    <Image
+                      src={project.bgImage}
+                      alt={project.name}
+                      fill
+                      className="object-cover opacity-50"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-900/90 to-neutral-800/70"></div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Fitness App</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Workout tracking and health monitoring for mobile devices.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
 
-              {/* Other Project Card 2 */}
-              <BentoCard className="bg-neutral-800/50 h-[250px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded">Game</span>
+                  <div className="flex flex-col h-full relative ">
+                    <div className="mb-4 flex justify-between items-center">
+                      <span className={`${project.bgColor} ${project.textColor} text-xs px-2 py-1 rounded`}>
+                        {project.language}
+                      </span>
+                      <span className="bg-gray-700/30 text-gray-300 text-xs px-2 py-1 rounded capitalize">
+                        {project.type}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+                    <p className="text-gray-400 text-sm flex-grow">{project.description}</p>
+                    <div className="mt-auto pt-4">
+                      {getSourceElement(project)}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Puzzle Game</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Browser-based puzzle game with progressive difficulty.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
-
-              {/* Other Project Card 3 */}
-              <BentoCard className="bg-neutral-800/50 h-[250px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-indigo-500/20 text-indigo-400 text-xs px-2 py-1 rounded">Desktop</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Productivity Tool</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Task management and time tracking desktop application.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
-
-              {/* Other Project Card 4 */}
-              <BentoCard className="bg-neutral-800/50 h-[250px] p-6 backdrop-blur-sm border border-neutral-700/30">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <span className="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded">API</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">REST API Service</h3>
-                  <p className="text-gray-400 text-sm flex-grow">Backend service with authentication and data management.</p>
-                  <div className="mt-auto pt-4">
-                    <a href="#" className="text-sm text-blue-400 hover:underline flex items-center gap-2">
-                      View details
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </BentoCard>
+                </BentoCard>
+              ))}
             </div>
           </div>
         </div>

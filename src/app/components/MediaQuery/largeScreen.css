@@ -503,7 +503,11 @@
 
   .project-card-container{
     margin-top: 2rem;
+    scale: 110%;
   }
+
+  
+
 }
 
 @media screen and (min-width: 2561px) {
