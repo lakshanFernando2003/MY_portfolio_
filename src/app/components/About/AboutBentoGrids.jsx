@@ -125,7 +125,7 @@ export const AboutBentoGrids = () => {
                       src={`/images/My-Selfcoloredit.png`}
                       alt={`Profile Background`}
                       fill
-                      className="-translate-y-15 object-cover object-center overflow-visible opacity-20"
+                      className="-translate-y-15 object-cover object-center overflow-visible opacity-30"
                       priority
                     />
                     {/* Dark overlay for better contrast */}
