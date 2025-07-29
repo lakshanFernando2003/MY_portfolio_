@@ -1,12 +1,32 @@
 import Image from 'next/image';
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/all';
 
 export default function NavBar() {
+  useEffect(() => {
+    // Register ScrollToPlugin
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollToPlugin);
+    }
+  }, []);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
+      // Get navbar height for offset
+      const navbar = document.querySelector('nav');
+      const navbarHeight = navbar ? navbar.offsetHeight + 20 : 20;
+
+      // Animate scrolling with GSAP
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: {
+          y: element.offsetTop - navbarHeight,
+          offsetY: 0,
+          autoKill: false
+        },
+        ease: "power3.inOut"  // Smooth easing function for natural feel
       });
     }
   };
@@ -36,7 +56,7 @@ export default function NavBar() {
           <li className="cursor-pointer hover:text-cyan-300 transition-colors" onClick={() => scrollToSection('roadmap')}>Road Map</li>
         </ul>
         <div className='items-center relative '>
-          <a className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s]' href=""><span className=' text-xs'>Let's Connect</span></a>
+          <a className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s]' onClick={() => scrollToSection('contactMe') }><span className=' text-xs'>Let's Connect</span></a>
         </div>
         </div>
 
