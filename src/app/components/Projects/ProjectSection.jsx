@@ -453,7 +453,7 @@ export default function ProjectSection() {
 
       <div className="relative w-full py-10 px-6 md:px-12 bg-neutral-950">
           {/* Web Projects Section */}
-          <div className="max-w-8xl mx-auto mb-16">
+          <div className="max-w-[100rem] mx-auto mb-16">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-3xl font-bold text-white">Web Projects</h2>
               <a href="#" className="group flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
@@ -502,7 +502,7 @@ export default function ProjectSection() {
           </div>
 
           {/* Other Projects Section */}
-          <div className="max-w-8xl mx-auto z-60">
+          <div className="max-w-[95rem] mx-auto z-60">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-3xl font-bold text-white">Other Projects</h2>
               <a href="#" className="group flex items-center gap-2 text-white hover:text-amber-400 transition-colors">

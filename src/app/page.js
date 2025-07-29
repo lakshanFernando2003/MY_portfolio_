@@ -7,6 +7,8 @@ import { AboutBentoGrids } from "./components/About/AboutBentoGrids";
 import ProjectSection from "./components/Projects/ProjectSection";
 import Skills from './components/Skills/Skills';
 import RoadMap from './components/RoadMap/RoadMap';
+import ContactMe from './components/ContactMe/ContactMe';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -46,6 +48,12 @@ export default function Home() {
       </div>
       <div id="roadmap">
         <RoadMap />
+      </div>
+      <div id="contactMe">
+        <ContactMe />
+      </div>
+      <div >
+        <Footer />
       </div>
       {/* <Skills /> */}
 
