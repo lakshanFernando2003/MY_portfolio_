@@ -95,7 +95,7 @@ export const AboutBentoGrids = () => {
         transition-all duration-700 ease-in-out
         ${lightOn ? 'opacity-10 blur-3xl scale-100' : 'opacity-0 blur-xl scale-50'}`}></div>
 
-      <div className=" w-[90vw] mt-15 mb-10 mx-auto px-3 md:px-10 z-40">
+      <div className=" w-[85vw] mt-15 mb-5 mx-auto px-3 md:px-5 z-40">
         {/* Main large bento tile */}
         <div className="relative h-96 w-full mb-7 grid grid-cols-2 grid-rows-1 gap-3 ">
 
@@ -114,18 +114,35 @@ export const AboutBentoGrids = () => {
         </div>
 
         {/* Grid layout for smaller tiles */}
-        <div className="grid h-[80vh] w-full grid-cols-3 grid-rows-2 gap-5">
-          <BentoTilt className="row-span-1 md:col-span-1 md:row-span-2">
-            <BentoCard>
+        <div className="grid h-[80vh] w-full grid-cols-5 grid-rows-2 gap-3">
+          {/* <BentoTilt className="row-span-1 md:col-span-1 md:row-span-2"> */}
+            <div className="row-span-1 md:col-span-1 md:row-span-2 overflow-visible">
               {/* customizable content */}
-                <div className="flex flex-col items-center justify-center h-full w-full p-1 ">
-                <BeyondCode />
-              </div>
-            </BentoCard>
-          </BentoTilt>
+                <div className="flex flex-col items-center justify-center h-full w-full p-1 relative overflow-visible">
+                  {/* Background image with overlay */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={`/images/My-Selfcoloredit.png`}
+                      alt={`Profile Background`}
+                      fill
+                      className="-translate-y-15 object-cover object-center overflow-visible opacity-20"
+                      priority
+                    />
+                    {/* Dark overlay for better contrast */}
+                    {/* <div className="absolute inset-0 bg-black/70 z-10"></div> */}
+                  </div>
+
+                  {/* Content that would go on top of the background image */}
+                  <div className="relative z-20 text-white p-4 w-full h-full flex flex-col justify-end">
+                    {/* <h3 className="text-2xl font-semibold mb-2">Lakshan Fernando</h3> */}
+                    <p className="text-sm opacity-50 font-semibold -ml-5">Software Developer & Designer</p>
+                  </div>
+                </div>
+            </div>
+          {/* </BentoTilt> */}
 
 
-          <BentoTilt className="border-gray-500 border-1  bento-tilt_3 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <BentoTilt className="border-gray-500 border-1  bento-tilt_3 row-span-1 ms-32 md:col-span-2 md:ms-0">
             <BentoCard>
                     {/* changing required */}
               {/* <div className="w-full h-full relative bg-white/7">
@@ -153,13 +170,19 @@ export const AboutBentoGrids = () => {
             </BentoCard>
           </BentoTilt>
 
-          <BentoTilt className="border-gray-500 border-0 bento-tilt_4 me-14 md:col-span-1 md:me-0">
-            <BentoCard>
+          {/* <BentoTilt className="border-gray-500 border-0 bento-tilt_4 me-14 md:col-span-1 md:me-0"> */}
+            <BentoCard className="border-gray-500 border-0 bento-tilt_4 me-14 md:col-span-2 md:me-0">
               <Collabaration/> {/* content component */}
+            </BentoCard>
+          {/* </BentoTilt> */}
+
+          <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-1">
+            <BentoCard>
+                <CommingSoon />
             </BentoCard>
           </BentoTilt>
 
-          <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-2">
+          <BentoTilt className="border-gray-500 border-1  bento-tilt_5 md:col-span-3">
             <BentoCard>
                 <CommingSoon />
             </BentoCard>
