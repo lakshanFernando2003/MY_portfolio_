@@ -138,7 +138,7 @@ export default function Heromain() {
         variants={fadeIn}
         className='relative flex flex-col items-center justify-center pointer-events-none'
       >
-        <h3 className='Hero-text z-50 text-white bg-clip-text inline-block font-semibold antialiased tracking-widest font-mono text-[1.2rem]'>
+        <h3 className='Hero-text z-10 text-white bg-clip-text inline-block font-semibold antialiased tracking-widest font-mono text-[1.2rem]'>
           Software Developer
         </h3>
       </motion.div>
