@@ -25,7 +25,7 @@ export default function NavBar() {
 
       // Animate scrolling with GSAP
       gsap.to(window, {
-        duration: 1.2,
+        duration: 2,
         scrollTo: {
           y: element.offsetTop - navbarHeight,
           offsetY: 0,
