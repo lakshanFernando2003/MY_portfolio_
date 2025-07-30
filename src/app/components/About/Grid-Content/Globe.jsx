@@ -30,7 +30,7 @@ export function Globe({
     polygonColor: "rgba(255,255,255,0.7)",
     globeColor: "#1d072e",
     emissive: "#000000",
-    emissiveIntensity: 0.1,
+    emissiveIntensity: 0.3,
     shininess: 0.9,
     arcTime: 2000,
     arcLength: 0.9,

@@ -400,7 +400,7 @@ const GridGlobe = () => {
       <div className="Globe-container w-full relative overflow-visible h-full items-center justify-center flex">
         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
         {/* remove -bottom-20 */}
-        <div className="Globe absolute z-[10] h-[100%] w-full">
+        <div className="Globe absolute z-[10] h-[100%] w-56">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
