@@ -45,11 +45,11 @@ export default function NavBar() {
 
   const handleMouseEnter = (idx) => {
     setHoveredIndex(idx);
-    
+
     // Get the actual dimensions of the hovered item
     const itemRect = itemRefs.current[idx]?.getBoundingClientRect();
     const listRect = itemRefs.current[idx]?.parentElement.getBoundingClientRect();
-    
+
     if (itemRect && listRect) {
       setHoveredItemDimensions({
         width: itemRect.width,
@@ -91,9 +91,9 @@ export default function NavBar() {
                     width: hoveredItemDimensions.width,
                     height: '100%'
                   }}
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 350, 
+                  transition={{
+                    type: "spring",
+                    stiffness: 350,
                     damping: 25,
                     layout: { duration: 0.2 }
                   }}
