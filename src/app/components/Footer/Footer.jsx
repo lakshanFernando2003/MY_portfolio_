@@ -71,11 +71,11 @@ export default function Footer() {
                      className='text-gray-400 hover:text-white transition-colors'>
                     <FaGithub size={16} />
                   </a>
-                  <a href="https://linkedin.com/in/lakshan-fernando" target="_blank" rel="noopener noreferrer"
+                  <a href="www.linkedin.com/in/-lakshan-fernando" target="_blank" rel="noopener noreferrer"
                      className='text-gray-400 hover:text-white transition-colors'>
                     <FaLinkedin size={16} />
                   </a>
-                  <a href="https://instagram.com/lakshan.fernando" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.instagram.com/_laksh__an_/" target="_blank" rel="noopener noreferrer"
                      className='text-gray-400 hover:text-white transition-colors'>
                     <FaInstagram size={16} />
                   </a>

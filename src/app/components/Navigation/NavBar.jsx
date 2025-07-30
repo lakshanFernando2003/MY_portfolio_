@@ -211,7 +211,7 @@ export default function NavBar() {
         <motion.div variants={socialVariants}>
           <Magnet padding={50} magnetStrength={5} wrapperClassName="relative">
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="http://www.linkedin.com/in/-lakshan-fernando"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-10 w-10 bg-[rgb(26_26_26_/_60%)] hover:bg-blue-600 transition-colors duration-300 rounded-full border border-white/20 backdrop-blur-3xl"
@@ -226,7 +226,7 @@ export default function NavBar() {
         <motion.div variants={socialVariants}>
           <Magnet padding={50} magnetStrength={5} wrapperClassName="relative">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/lakshanFernando2003"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-10 w-10 bg-[rgb(26_26_26_/_60%)] hover:bg-gray-700 transition-colors duration-300 rounded-full border border-white/20 backdrop-blur-3xl"
@@ -241,7 +241,7 @@ export default function NavBar() {
         <motion.div variants={socialVariants}>
           <Magnet padding={50} magnetStrength={5} wrapperClassName="relative">
             <a
-              href="https://instagram.com/yourusername"
+              href="https://www.instagram.com/_laksh__an_/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center h-10 w-10 bg-[rgb(26_26_26_/_60%)] hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 transition-colors duration-300 rounded-full border border-white/20 backdrop-blur-3xl"
