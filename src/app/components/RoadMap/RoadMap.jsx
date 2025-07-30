@@ -146,7 +146,29 @@ const GlowCard = ({ card, index, children }) => {
 
 export default function RoadMap() {
   const sectionEndRef = useRef(null);
+  const sectionRef = useRef(null);
+  const timelineRef = useRef(null);
+  const cardRefs = useRef([]);
+
   useGSAP(() => {
+    // First, set all cards to be invisible initially
+    gsap.set(".timeline-card, .Roadmap-card", {
+      opacity: 0,
+      x: (index, target) => {
+        // Check if it's a left or right element
+        if (target.closest(".xl\\:w-2\\/6") && !target.classList.contains("Roadmap-card")) {
+          return -100; // Left element (GlowCard on odd, Roadmap-card on even)
+        } else {
+          return 100; // Right element (Roadmap-card on odd, GlowCard on even)
+        }
+      }
+    });
+
+    gsap.set(".timeline-logo", {
+      opacity: 0,
+      scale: 0
+    });
+
     // Loop through each timeline card and animate them in
     gsap.utils.toArray(".timeline-card").forEach((card) => {
       gsap.from(card, {
@@ -179,52 +201,73 @@ export default function RoadMap() {
       },
     });
 
-    // Animate the text elements
-    gsap.utils.toArray(".expText").forEach((text) => {
-      gsap.from(text, {
-        opacity: 0,
-        xPercent: 0,
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: text,
-          start: "top 60%",
-        },
-      });
-    }, "<");
+    // Create animations for each card pair based on its position in the roadmap
+    roadmapData.forEach((card, index) => {
+      const cardWrapper = cardRefs.current[index];
+      if (!cardWrapper) return;
 
-    // Add animation for Roadmap-card elements
-    gsap.utils.toArray(".Roadmap-card").forEach((card) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 75%",
+      const isOdd = card.id % 2 === 1;
+
+      // Get left and right elements for this card
+      const leftElement = cardWrapper.querySelector(isOdd ? ".timeline-card" : ".Roadmap-card");
+      const rightElement = cardWrapper.querySelector(isOdd ? ".Roadmap-card" : ".timeline-card");
+      const timelineLogo = cardWrapper.querySelector(".timeline-logo");
+
+      // Create ScrollTrigger for this specific card
+      ScrollTrigger.create({
+        trigger: cardWrapper,
+        start: "top 50%",
+        end: "bottom 20%",
+        markers: false,
+        // This makes animations respond to scroll direction
+        toggleActions: "play reverse play reverse",
+        onEnter: () => {
+          // Animate left element from left
+          gsap.fromTo(leftElement,
+            { x: -100, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.9, ease: "power2.out" }
+          );
+
+          // Animate right element from right
+          gsap.fromTo(rightElement,
+            { x: 100, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.7, ease: "power2.out", delay: 0.1 }
+          );
+
+          // Animate timeline logo with bounce effect
+          gsap.fromTo(timelineLogo,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+          );
+        },
+        onLeaveBack: () => {
+          // Reverse animations when scrolling up
+          gsap.to(leftElement, { x: -100, opacity: 0, duration: 0.4 });
+          gsap.to(rightElement, { x: 100, opacity: 0, duration: 0.4 });
+          gsap.to(timelineLogo, { scale: 0, opacity: 0, duration: 0.3 });
         }
       });
     });
+
   }, []);
 
   return (
-    <section id="roadmap" className="flex-center md:mt-40 mt-20 section-padding xl:px-0">
+    <section id="roadmap" ref={sectionRef} className="flex-center md:mt-40 mt-20 section-padding xl:px-0">
       <div className="w-full h-[30vh] overflow-hidden -mt-40">
-              {/* Section lamp Header */}
-              <AnimateLamp
-                className="m-1"
-                lightClassName=""
-                beamClassName=""
-                lightColor="#5DBB99"
-                lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
-                beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
-                lightOpacity={0.5}
-                lightBlur="blur-[48px]"
-                enableStickyEffect={true}
-                endTarget={sectionEndRef}
-              />
-            </div>
+          {/* Section lamp Header */}
+          <AnimateLamp
+            className="m-1"
+            lightClassName=""
+            beamClassName=""
+            lightColor="#5DBB99"
+            lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
+            beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
+            lightOpacity={0.5}
+            lightBlur="blur-[48px]"
+            enableStickyEffect={true}
+            endTarget={sectionEndRef}
+          />
+        </div>
 
       <div className="w-full h-full md:px-20 px-5 -mt-35">
         <div className="mb-10 text-center mx-auto max-w-3xl">
@@ -234,9 +277,13 @@ export default function RoadMap() {
 
         <div className="mt-32 relative mx-auto max-w-8xl">
           {/* Combined structure with conditional rendering based on ID */}
-          <div className="relative z-40 xl:space-y-32 space-y-10">
-            {roadmapData.map((card) => (
-              <div key={card.title + card.id} className="exp-card-wrapper">
+          <div className="relative z-40 xl:space-y-16 space-y-10">
+            {roadmapData.map((card, index) => (
+              <div
+                key={card.title + card.id}
+                className="exp-card-wrapper"
+                ref={el => cardRefs.current[index] = el}
+              >
                 {card.id % 2 === 1 ? (
                   // First structure (odd IDs): GlowCard on left and Roadmap-card on right
                   <>
@@ -251,7 +298,7 @@ export default function RoadMap() {
                       <div className="flex items-start">
                         <div className="timeline-wrapper absolute top-0 h-full flex justify-center">
                           <div className="timeline -top-10 w-14 md:w-28 bg-black" />
-                          <div className="gradient-line w-1 h-full" />
+                          <div className="gradient-line w-1 h-full" ref={index === 0 ? timelineRef : null} />
                         </div>
                         <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                           <div className="timeline-logo size-10 md:size-14 flex flex-none rounded-full justify-center items-center border border-black-50 bg-black-100">
