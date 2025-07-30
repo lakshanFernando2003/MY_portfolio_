@@ -128,14 +128,14 @@ export default function NavBar() {
             <div className='flex h-9 w-9 relative overflow-hidden'>
               <Image
                 className="rounded-full"
-                src="/images/me.jpg"
+                src="/images/my-Self-1.jpg"
                 alt="intro image"
                 fill={true}
                 priority={true}
               >
               </Image>
             </div>
-            <h1 className='text-lg capitalize'>Lakshan</h1>
+            <h1 className='text-lg capitalize'>LakshaN</h1>
           </motion.div>
 
           <ul className="flex flex-row gap-8 items-center pl-2 pr-2 relative">
