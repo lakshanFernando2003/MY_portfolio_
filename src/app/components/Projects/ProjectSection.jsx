@@ -361,7 +361,7 @@ export default function ProjectSection() {
       </div>
 
 
-      <div ref={horizontalRef} className="w-full h-auto flex flex-col justify-center items-center text-white pt-8 relative ">
+      <div ref={horizontalRef} className="w-full h-auto flex flex-col justify-center items-center text-white pt-8 relative z-20 ">
           {/* Add the bubbles background */}
           {/* <BubblesBackground count={30} /> */}
             {/* Add the advanced bubbles background */}
@@ -377,8 +377,8 @@ export default function ProjectSection() {
                   randomMovement={true}       // Enable/disable random floating animation
                 />
 
-          <div className="mt-14 text-center relative z-20">
-            <h2 className="text-4xl uppercase tracking-wider font-semibold mb-3 font-mono">Recent Work</h2>
+          <div className="relative mt-14 text-center">
+            <h2 className=" relative text-4xl uppercase tracking-wider font-semibold mb-3 font-mono z-20 translate-y-[2rem]">Recent Work</h2>
           </div>
 
           {/* Horizontal scrolling projects section */}
