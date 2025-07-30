@@ -549,7 +549,7 @@ export default function ProjectSection() {
           </div>
         </div>
 
-      <div ref={sectionEndRef}></div>
+      <div className='-translate-y-30' ref={sectionEndRef}></div>
     </div>
   );
 }

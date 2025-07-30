@@ -375,7 +375,7 @@ export default function RoadMap() {
         </div>
       </div>
 
-      <div ref={sectionEndRef}></div>
+      <div className='-translate-y-10' ref={sectionEndRef}></div>
     </section>
   );
 }

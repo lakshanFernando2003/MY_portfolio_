@@ -207,7 +207,7 @@ export default function Heromain() {
         </motion.div>
       </motion.div>
 
-      <div ref={sectionEndRef}></div>
+      <div className='-translate-y-20' ref={sectionEndRef}></div>
     </motion.div>
   )
 }
