@@ -105,7 +105,7 @@ export default function NavBar() {
               <li
                 key={item.id}
                 ref={el => itemRefs.current[idx] = el}
-                className="relative font-semibold text-sm tracking-wide cursor-pointer"
+                className="relative font-semibold text-sm tracking-wide"
                 onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
