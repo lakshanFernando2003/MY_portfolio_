@@ -16,31 +16,31 @@ export default function Collabaration() {
       id: 1,
       name: "Alex",
       designation: "UX Designer",
-      image: "https://i.pravatar.cc/100?img=1",
+      image: "https://i.pravatar.cc/100?img=19",
     },
     {
       id: 2,
       name: "Lakshan",
       designation: "Team Lead",
-      image: "https://i.pravatar.cc/100?img=2",
+      image: "https://i.pravatar.cc/100?img=12",
     },
     {
       id: 3,
       name: "Jennie",
       designation: "Frontend Dev",
-      image: "https://i.pravatar.cc/100?img=3",
+      image: "https://i.pravatar.cc/100?img=25",
     },
     {
       id: 4,
       name: "Michael",
       designation: "Backend Dev",
-      image: "https://i.pravatar.cc/100?img=4",
+      image: "https://i.pravatar.cc/100?img=14",
     },
     {
       id: 5,
       name: "Sarah",
       designation: "Project Manager",
-      image: "https://i.pravatar.cc/100?img=5",
+      image: "https://i.pravatar.cc/100?img=60",
     },
   ];
 
