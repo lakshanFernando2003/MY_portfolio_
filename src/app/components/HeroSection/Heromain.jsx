@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { motion } from 'framer-motion'
 import Lamp from './Herolamp'
 import AnimateLamp from '../Section Lamps/AnimateLamp';
 import Midlapm from './lamp'
@@ -9,11 +10,36 @@ import '../MediaQuery/largeScreen.css';
 
 
 export default function Heromain() {
-
   const sectionEndRef = useRef(null);
 
+  // Animation variants for fade-in effects
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+        when: "beforeChildren"
+      }
+    }
+  };
+
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       <style jsx>{`
         .scroll-down {
           height: 50px;
@@ -95,7 +121,7 @@ export default function Heromain() {
         }
       `}</style>
 
-      <div>
+      <motion.div variants={fadeIn}>
         <Lamp/>
           <AnimateLamp
               enableStickyEffect={false}
@@ -106,12 +132,16 @@ export default function Heromain() {
               beamGradient='linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%)'
               containerPosition='Animate-Hero-Lamp'
             />
-      </div>
-      <div className=' relative flex flex-col items-center justify-center pointer-events-none '>
-            <h3 className='Hero-text z-50 text-white bg-clip-text inline-block font-semibold antialiased tracking-widest font-mono  text-[1.2rem]'>
-            Software Developer
-            </h3>
-      </div>
+      </motion.div>
+
+      <motion.div
+        variants={fadeIn}
+        className='relative flex flex-col items-center justify-center pointer-events-none'
+      >
+        <h3 className='Hero-text z-50 text-white bg-clip-text inline-block font-semibold antialiased tracking-widest font-mono text-[1.2rem]'>
+          Software Developer
+        </h3>
+      </motion.div>
 
       <div className='Hero-text-container relative items-center justify-center w-full pointer-events-none z-10 '>
         <HeroText/>
@@ -121,34 +151,63 @@ export default function Heromain() {
           {/* <ReactiveOrb/> */}
         </div>
 
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.8,
+              ease: "easeOut",
+              delay: 1.2 // Delay the scroll indicator to appear last
+            }
+          }
+        }}
+        className='relative flex items-center justify-center z-10 -mt-4 gap-4'
+      >
+        <div className="scroll-down"></div>
+        <h3 className='scroll-text'>Scroll Down to be Amazed !</h3>
+      </motion.div>
 
-
-        <div className='relative flex items-center justify-center z-10 -mt-4 gap-4'>
-          <div className="scroll-down"></div>
-          <h3 className='scroll-text'>Scroll Down to be Amazed !</h3>
+      <motion.div
+        variants={fadeIn}
+        className='Lamp-container'
+      >
+        <div className='Mid-Lamp relative flex items-center justify-center z-[2]'>
+          <Midlapm/>
         </div>
-
-      <div className='Lamp-container'>
-          <div className='Mid-Lamp relative flex items-center justify-center z-[2] '>
-            <Midlapm/>
-          </div>
-          <AnimateLamp
-              enableStickyEffect={true}
-              endTarget={sectionEndRef}
-              lightOpacity={0.4}
-              lightColor="#0099FF"
-              lightHeight='8rem'
-              beamHeight='0px'
-              lightGradient='radial-gradient(circle, rgba(0, 153, 255, 1) 0%, rgba(0, 153, 255, 0.17) 100%)'
-              beamGradient='linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%)'
-              containerPosition='Animate-Mid-Lamp'
-            />
-          <div className='Image-Box z-[-2] relative flex items-center justify-center '>
-            <ImageBox/>
-          </div>
-      </div>
+        <AnimateLamp
+          enableStickyEffect={true}
+          endTarget={sectionEndRef}
+          lightOpacity={0.4}
+          lightColor="#0099FF"
+          lightHeight='8rem'
+          beamHeight='0px'
+          lightGradient='radial-gradient(circle, rgba(0, 153, 255, 1) 0%, rgba(0, 153, 255, 0.17) 100%)'
+          beamGradient='linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%)'
+          containerPosition='Animate-Mid-Lamp'
+        />
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 1.2,
+                ease: "easeOut",
+                delay: 0.3
+              }
+            }
+          }}
+          className='Image-Box z-[-2] relative flex items-center justify-center'
+        >
+          <ImageBox/>
+        </motion.div>
+      </motion.div>
 
       <div ref={sectionEndRef}></div>
-    </>
+    </motion.div>
   )
 }

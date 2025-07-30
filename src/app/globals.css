@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #171717;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -27,7 +27,7 @@ body {
   cursor: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Hide scrollbars but keep functionality */
