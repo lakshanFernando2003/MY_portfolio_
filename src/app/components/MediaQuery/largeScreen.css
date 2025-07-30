@@ -356,7 +356,7 @@
 
   .Hero-text{
   /* margin-top: -38rem; */
-  transform: translateY(-17rem);
+  transform: translateY(-10rem);
  }
 
  .Hero-text-container{
@@ -506,7 +506,7 @@
     scale: 110%;
   }
 
-  
+
 
 }
 

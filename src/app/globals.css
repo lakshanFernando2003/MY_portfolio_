@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #171717;
   --foreground: #171717;
 }
 
@@ -51,5 +51,3 @@ html {
   scrollbar-color: rgba(128, 128, 128, 0.5) transparent;
 
 }
-
-

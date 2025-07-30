@@ -93,7 +93,7 @@ const otherProjects = [
     language: "Java",
     name: "BookStore Application API",
     description: "A BookStore that containes eBooks which can be purchased by customers.",
-    source: "",
+    source: "https://github.com/lakshanFernando2003",
     bgColor: "bg-cyan-500/20",
     textColor: "text-cyan-400",
     bgImage: "/images/projects/BookStore.jpeg"

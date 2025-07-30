@@ -14,6 +14,87 @@ export default function Heromain() {
 
   return (
     <>
+      <style jsx>{`
+        .scroll-down {
+          height: 50px;
+          width: 30px;
+          border: 2px solid lightgray;
+          position: absolute;
+          left: 49%;
+          bottom: 8%;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.626);
+        }
+
+        .scroll-down::before,
+        .scroll-down::after {
+          content: "";
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          height: 10px;
+          width: 10px;
+          transform: translate(-50%, -100%) rotate(45deg);
+          border: 2px solid lightgray;
+          border-top: transparent;
+          border-left: transparent;
+          animation: scroll-down 2s ease-in-out infinite;
+        }
+
+        .scroll-down::before {
+          top: 30%;
+          animation-delay: 0.5s;
+        }
+
+        @keyframes scroll-down {
+          0% {
+            opacity: 0;
+          }
+          30% {
+            opacity: 1;
+          }
+          60% {
+            opacity: 1;
+          }
+          100% {
+            top: 90%;
+            opacity: 0;
+          }
+        }
+
+        /* Text styling to match scroll indicator */
+        .scroll-text {
+          color: lightgray;
+          text-align: center;
+          position: absolute;
+          width: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -2rem;
+          font-size: 0.8rem;
+          font-weight: 400;
+          letter-spacing: 0.1rem;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.626);
+          animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0% {
+            opacity: 0.7;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+          }
+          50% {
+            opacity: 1;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+          }
+          100% {
+            opacity: 0.7;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+          }
+        }
+      `}</style>
+
       <div>
         <Lamp/>
           <AnimateLamp
@@ -26,9 +107,9 @@ export default function Heromain() {
               containerPosition='Animate-Hero-Lamp'
             />
       </div>
-      <div className=' relative flex items-center justify-center pointer-events-none '>
-            <h3 className='Hero-text z-50 bg-gradient-to-r from-[#AAFFFF] via-[#0099FF] to-[#0066CC] text-transparent   bg-clip-text inline-block font-semibold antialiased tracking-wide font-mono text-[1rem]'>
-            Software Engineer
+      <div className=' relative flex flex-col items-center justify-center pointer-events-none '>
+            <h3 className='Hero-text z-50 text-white bg-clip-text inline-block font-semibold antialiased tracking-widest font-mono  text-[1.2rem]'>
+            Software Developer
             </h3>
       </div>
 
@@ -38,6 +119,13 @@ export default function Heromain() {
 
         <div className='reactive-Orb-container relative w-full h-screen z-[1]'>
           {/* <ReactiveOrb/> */}
+        </div>
+
+
+
+        <div className='relative flex items-center justify-center z-10 -mt-4 gap-4'>
+          <div className="scroll-down"></div>
+          <h3 className='scroll-text'>Scroll Down to be Amazed !</h3>
         </div>
 
       <div className='Lamp-container'>
