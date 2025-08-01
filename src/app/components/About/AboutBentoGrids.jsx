@@ -7,7 +7,7 @@ import Image from "next/image";
 import AnimateLamp from "../Section Lamps/AnimateLamp";
 import GridGlobe from "./Grid-Content/GridGlobe";
 import Collabaration from "./Grid-Content/Collabaration";
-import BeyondCode from "./Grid-Content/BeyondCode";
+import Technologies from "./Grid-Content/Technologies";
 import CommingSoon from "./Grid-Content/CommingSoon";
 import "../MediaQuery/largeScreen.css"
 
@@ -274,17 +274,10 @@ export const AboutBentoGrids = () => {
 
           {/* animate from right to Initial original position */}
           <BentoTilt className="border-gray-500 border-1 bento-tilt_5 md:col-span-3">
-            <motion.div
-              className="h-full"
-              variants={itemFromRight}
-              style={{
-                y: useTransform(scrollYProgress, [0, 1], [0, -30])
-              }}
-            >
               <BentoCard>
-                <CommingSoon />
+                <Technologies/>
               </BentoCard>
-            </motion.div>
+
           </BentoTilt>
         </div>
       </div>
