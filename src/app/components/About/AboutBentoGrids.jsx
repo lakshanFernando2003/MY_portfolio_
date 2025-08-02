@@ -160,7 +160,7 @@ export const AboutBentoGrids = () => {
         ${lightOn ? 'opacity-10 blur-3xl scale-100' : 'opacity-0 blur-xl scale-50'}`}></div> */}
       </motion.div>
 
-      <div className="w-[85vw] mt-25 mb-5 mx-auto px-3 md:px-5 z-40">
+      <div className="w-[85vw] mt-30 mb-5 mx-auto px-3 md:px-5 z-40">
         {/* Main large bento tile */}
 
         {/* <div className="relative h-96 w-full mb-7 grid grid-cols-2 grid-rows-1 gap-3">
