@@ -220,7 +220,7 @@ export default function Technologies() {
         ref={marqueeAreaRef}
         className="absolute inset-0 flex flex-col justify-center z-10"
       >
-        <h3 className="text-3xl md:text-5xl font-mono tracking-wide font-bold text-white mb-5 text-center">
+        <h3 className="text-3xl md:text-5xl font-sans tracking-wide font-bold bg mb-5 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
           Technologies
         </h3>
         {/* First Marquee - Left to Right */}
