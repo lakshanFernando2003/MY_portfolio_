@@ -160,7 +160,7 @@ export const AboutBentoGrids = () => {
         ${lightOn ? 'opacity-10 blur-3xl scale-100' : 'opacity-0 blur-xl scale-50'}`}></div> */}
       </motion.div>
 
-      <div className="w-[85vw] mt-15 mb-5 mx-auto px-3 md:px-5 z-40">
+      <div className="w-[85vw] mt-25 mb-5 mx-auto px-3 md:px-5 z-40">
         {/* Main large bento tile */}
 
         {/* <div className="relative h-96 w-full mb-7 grid grid-cols-2 grid-rows-1 gap-3">
@@ -230,7 +230,7 @@ export const AboutBentoGrids = () => {
           {/* animate from left to Initial original position */}
           <BentoTilt className="border-gray-500 border-0 bento-tilt_3 row-span-1 ms-32 md:col-span-2 md:ms-0 overflow-visible">
             <motion.div
-              className="-mt-10"
+              className="-mt-15"
               variants={itemFromLeft}
               style={{
                 y: useTransform(scrollYProgress, [0, 1], [0, -25])
@@ -243,8 +243,8 @@ export const AboutBentoGrids = () => {
           </BentoTilt>
 
           {/* animate from right to Initial original position */}
-          <div
-            className="border-gray-500 border-1 bento-tilt_4 me-14 md:col-span-2 md:me-0"
+          <BentoTilt
+            className="border-neutral-800 border-1 rounded-2xl  bento-tilt_4 me-14 md:col-span-2 md:me-0"
             variants={itemFromRight}
             style={{
               y: useTransform(scrollYProgress, [0, 1], [0, -35])
@@ -258,7 +258,7 @@ export const AboutBentoGrids = () => {
                   <h3 className="Globe-Text-bottom absolute text-left bottom-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
                 </div>
             </BentoCard>
-          </div>
+          </BentoTilt>
 
           {/* animate from left to Initial original position */}
           {/* <BentoTilt className="border-gray-500 border-1 bento-tilt_5 md:col-span-1">
@@ -276,9 +276,9 @@ export const AboutBentoGrids = () => {
           </BentoTilt> */}
 
           {/* animate from left to Initial original position */}
-          <BentoTilt className="border-gray-500 border-0 bento-tilt_5 md:col-span-1">
+          <div className="border-neutral-800 border-0 rounded-lg bento-tilt_5 md:col-span-1">
             <motion.div
-              className="h-full"
+              className="h-full mt-3"
               variants={itemFromLeft}
               style={{
                 y: useTransform(scrollYProgress, [0, 1], [0, -20])
@@ -288,10 +288,10 @@ export const AboutBentoGrids = () => {
                <Collabaration /> {/* content component */}
               </BentoCard>
             </motion.div>
-          </BentoTilt>
+          </div>
 
           {/* animate from right to Initial original position */}
-          <BentoTilt className="border-gray-500 border-1 bento-tilt_5 md:col-span-3">
+          <BentoTilt className="border-neutral-800 border-1 rounded-br-2xl rounded-tl-2xl bento-tilt_5 md:col-span-3">
               <BentoCard>
                 <Technologies/>
               </BentoCard>
