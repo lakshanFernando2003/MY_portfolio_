@@ -12,6 +12,7 @@ export default function AnimateLamp({
     lightClassName = '',
     lightHeight = '15rem',
     lightWidth = '71rem',
+    // lightWidth = '30rem',
     lightColor = 'rgb(128, 0, 255)',
     lightOpacity = 0.35,
     lightScale = 100,

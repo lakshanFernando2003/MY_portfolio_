@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,7 +14,7 @@ const roadmapData = [
   {
     id: 1,
     review: "Developed interest in programming through school projects and self-learning. Started with basic web development and discovered my passion for creating with code.",
-    imgPath: "/images/roadmap1.png",
+    // imgPath: "/images/roadmap1.png",
     logoPath: "/images/logo2.png",
     title: "High School",
     date: "2016 - 2020",
@@ -28,7 +28,7 @@ const roadmapData = [
   {
     id: 2,
     review: "Embarked on my journey in computer science at university. Taking courses in programming fundamentals, algorithms, data structures, and exploring different areas of software development.",
-    imgPath: "/images/roadmap2.png",
+    // imgPath: "/images/roadmap2.png",
     logoPath: "/images/logo2.png",
     title: "University Begins",
     date: "2023 - 2024",
@@ -42,7 +42,7 @@ const roadmapData = [
   {
     id: 3,
     review: "Expanding my knowledge through personal projects and coursework. Focusing on web development with React and Next.js while developing a strong foundation in software engineering principles.",
-    imgPath: "/images/roadmap3.png",
+    // imgPath: "/images/roadmap3.png",
     logoPath: "/images/logo2.png",
     title: "Learning",
     date: "2023 - 2024",
@@ -56,7 +56,7 @@ const roadmapData = [
   {
     id: 4,
     review: "Currently looking for internship opportunities to gain real-world experience in software development. Polishing my portfolio and enhancing my skills to prepare for the professional world.",
-    imgPath: "/images/roadmap3.png",
+    // imgPath: "/images/roadmap3.png",
     logoPath: "/images/logo2.png",
     title: "Present",
     date: "2025 - Present",
@@ -70,7 +70,7 @@ const roadmapData = [
   {
     id: 5,
     review: "Aiming to secure an internship or junior role where I can apply my skills, learn from experienced professionals, and contribute to meaningful projects in a team environment.",
-    imgPath: "/images/roadmap2.png",
+    // imgPath: "/images/roadmap2.png",
     logoPath: "/images/logo2.png",
     title: "Near Future",
     date: "2025 - Present",
@@ -99,35 +99,11 @@ const roadmapData = [
 
 // GlowCard component for roadmap items
 const GlowCard = ({ card, index, children }) => {
-  // refs for all the cards
   const cardRefs = useRef([]);
-
-  // when mouse moves over a card, rotate the glow effect
-  const handleMouseMove = (index) => (e) => {
-    // get the current card
-    const card = cardRefs.current[index];
-    if (!card) return;
-
-    // get the mouse position relative to the card
-    const rect = card.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left - rect.width / 2;
-    const mouseY = e.clientY - rect.top - rect.height / 2;
-
-    // calculate the angle from the center of the card to the mouse
-    let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
-
-    // adjust the angle so that it's between 0 and 360
-    angle = (angle + 360) % 360;
-
-    // set the angle as a CSS variable
-    card.style.setProperty("--start", angle + 60);
-  };
-
   // return the card component with the mouse move event
   return (
     <div
       ref={(el) => (cardRefs.current[index] = el)}
-      onMouseMove={handleMouseMove(index)}
       className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column -z-10"
     >
       <div className="glow"></div>
@@ -144,13 +120,178 @@ const GlowCard = ({ card, index, children }) => {
   );
 };
 
+// New Mobile RoadMap Component
+const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
+  const mobileCardRefs = useRef([]);
+  const timelineRef = useRef(null);
+
+  useGSAP(() => {
+    // Initial setup for cards and logos
+    gsap.set(".roadmap-card", {
+      opacity: 0,
+      x: 100
+    });
+
+    gsap.set(".timeline-logo", {
+      opacity: 0,
+      scale: 0
+    });
+
+    // Animate the timeline height as the user scrolls
+    gsap.to(".timeline", {
+      transformOrigin: "bottom bottom",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".timeline",
+        start: "top center",
+        end: "90% center",
+        markers: false,
+        onUpdate: (self) => {
+          gsap.to(".timeline", {
+            scaleY: 1 - self.progress,
+          });
+        },
+      },
+    });
+
+    // Card and logo animations - keep existing
+    roadmapData.forEach((Card , index) => {
+      const cardWrapper = mobileCardRefs.current[index];
+      if (!cardWrapper) return;
+
+      const roadmapCard = cardWrapper.querySelector(".roadmap-card");
+      const timelineLogo = cardWrapper.querySelector(".timeline-logo");
+
+      ScrollTrigger.create({
+        trigger: cardWrapper,
+        start: "top 70%",
+        end: "bottom 20%",
+        markers: true,
+        toggleActions: "play reverse play reverse",
+        onEnter: () => {
+          // Animate roadmap card from right (like desktop right element)
+          gsap.fromTo(roadmapCard,
+            { x: -100, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }
+          );
+
+          // Animate timeline logo with bounce effect (same as desktop)
+          gsap.fromTo(timelineLogo,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+          );
+        },
+        onLeaveBack: () => {
+          // Reverse animations when scrolling up
+          gsap.to(roadmapCard, { x: -100, opacity: 0, duration: 0.4 });
+          gsap.to(timelineLogo, { scale: 0, opacity: 0, duration: 0.3 });
+        }
+      });
+    });
+  }, []);
+
+  return (
+    <section id="roadmap" ref={sectionRef} className="flex-center mt-20 section-padding px-4">
+      <div className="w-full h-[30vh] overflow-hidden -mt-40">
+        {/* Section lamp Header */}
+        <AnimateLamp
+          className="m-1"
+          lightClassName='Animate-lamp-light'
+          beamClassName='Animate-lamp-beam'
+          lightColor="#5DBB99"
+          lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
+          beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
+          lightOpacity={0.5}
+          lightBlur="blur-[48px]"
+          enableStickyEffect={true}
+          endTarget={sectionEndRef}
+        />
+      </div>
+
+      <div className="w-full h-full -mt-35">
+        <div className="mb-10 text-center mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold mb-2">My Development Journey</h2>
+          <p className="text-white-50">🗺️ Career Roadmap and Milestones</p>
+        </div>
+
+        <div className="mt-20 relative mx-auto max-w-4xl overflow-hidden">
+          <div className="relative z-40 space-y-12">
+            {roadmapData.map((card, index) => (
+              <div
+                key={card.title + card.id}
+                ref={el => mobileCardRefs.current[index] = el}
+                className="exp-card-wrapper"
+              >
+                {/* Main content area */}
+                <div className="w-full">
+                  <div className="flex items-start">
+                    <div className="timeline-wrapper absolute mt-1 left-5 h-full flex justify-center">
+                      <div className="timeline w-15 bg-black"/>
+                      <div className="gradient-line w-1 h-full" ref={index === 0 ? timelineRef : null} />
+                    </div>
+                    <div className="expText flex gap-4 relative z-20 ">
+                      <div className="timeline-logo size-10 flex flex-none rounded-full justify-center items-center border border-black-50 bg-black-100 ">
+                        <img src={card.logoPath} alt="logo" className="w-5 h-5" />
+                      </div>
+                      <div className="roadmap-card bg-black-100 p-4 rounded-lg border border-black-50">
+                        <h1 className="font-semibold text-xl">{card.title}</h1>
+                        <p className="my-3 text-white-50 text-sm">
+                          🗓️&nbsp;{card.date}
+                        </p>
+                        <p className="text-[#839CB5] italic text-sm">
+                          Key Achievements
+                        </p>
+                        <ul className="list-disc ms-5 mt-3 flex flex-col gap-3 text-white-50">
+                          {card.responsibilities.map((responsibility, idx) => (
+                            <li key={idx} className="text-sm">
+                              {responsibility}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className='-translate-y-10' ref={sectionEndRef}></div>
+    </section>
+  );
+};
+
 export default function RoadMap() {
   const sectionEndRef = useRef(null);
   const sectionRef = useRef(null);
   const timelineRef = useRef(null);
   const cardRefs = useRef([]);
 
+  // State to track if device is mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Effect to detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add event listener for resize
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   useGSAP(() => {
+    // Only run desktop animations if not mobile
+    if (isMobile) return;
+
     // First, set all cards to be invisible initially
     gsap.set(".timeline-card, .Roadmap-card", {
       opacity: 0,
@@ -169,22 +310,7 @@ export default function RoadMap() {
       scale: 0
     });
 
-    // Loop through each timeline card and animate them in
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
-      gsap.from(card, {
-        xPercent: -100,
-        opacity: 0,
-        transformOrigin: "left left",
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-        },
-      });
-    });
-
-    // Animate the timeline height as the user scrolls
+    // // Animate the timeline height as the user scrolls
     gsap.to(".timeline", {
       transformOrigin: "bottom bottom",
       ease: "power1.inOut",
@@ -249,25 +375,36 @@ export default function RoadMap() {
       });
     });
 
-  }, []);
+  }, [isMobile]);
+
+  // Conditional rendering based on screen size
+  if (isMobile) {
+    return (
+      <MobileRoadMap
+        roadmapData={roadmapData}
+        sectionEndRef={sectionEndRef}
+        sectionRef={sectionRef}
+      />
+    );
+  }
 
   return (
     <section id="roadmap" ref={sectionRef} className="flex-center md:mt-40 mt-20 section-padding xl:px-0">
       <div className="w-full h-[30vh] overflow-hidden -mt-40">
-          {/* Section lamp Header */}
-          <AnimateLamp
-            className="m-1"
-            lightClassName=""
-            beamClassName=""
-            lightColor="#5DBB99"
-            lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
-            beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
-            lightOpacity={0.5}
-            lightBlur="blur-[48px]"
-            enableStickyEffect={true}
-            endTarget={sectionEndRef}
-          />
-        </div>
+        {/* Section lamp Header */}
+        <AnimateLamp
+          className="m-1"
+          lightClassName='Animate-lamp-light'
+          beamClassName='Animate-lamp-beam'
+          lightColor="#5DBB99"
+          lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
+          beamGradient="linear-gradient(90deg,rgba(93, 187, 153, 0) 0%, rgba(93, 187, 153, 0.4) 15%, rgba(93, 187, 153, 0.65) 30%, rgba(93, 187, 153, 0.8) 40%, rgba(93, 187, 153, 1) 50%, rgba(93, 187, 153, 0.8) 60%, rgba(93, 187, 153, 0.65) 70%, rgba(93, 187, 153, 0.4) 85%, rgba(93, 187, 153, 0) 100%)"
+          lightOpacity={0.5}
+          lightBlur="blur-[48px]"
+          enableStickyEffect={true}
+          endTarget={sectionEndRef}
+        />
+      </div>
 
       <div className="w-full h-full md:px-20 px-5 -mt-35">
         <div className="mb-10 text-center mx-auto max-w-3xl">
@@ -377,5 +514,6 @@ export default function RoadMap() {
 
       <div className='-translate-y-10' ref={sectionEndRef}></div>
     </section>
+
   );
 }

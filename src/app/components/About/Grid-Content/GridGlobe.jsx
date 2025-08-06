@@ -1,14 +1,41 @@
 "use client";
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useInView } from "framer-motion"; // Added for viewport detection
 
+// OPTIMIZATION: Using dynamic import with a loading state
+// Using key prop with dynamic to force component remount
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
+  loading: () => (
+    <div className="h-full w-full flex items-center justify-center">
+      <div className="animate-pulse text-blue-400">Loading Globe...</div>
+    </div>
+  )
 });
 
 const GridGlobe = () => {
+  // OPTIMIZATION: Added ref and viewport detection
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, {
+    once: false,
+    amount: 0.3, // Only need 30% visibility to trigger
+    margin: "100px 0px" // Preload a bit before it comes into view
+  });
+
+  // OPTIMIZATION: Track mount state to force complete remount
+  const [mountKey, setMountKey] = useState(0);
+
+  // OPTIMIZATION: Force remount when coming back into view
+  useEffect(() => {
+    if (isInView) {
+      setMountKey(prev => prev + 1);
+    }
+  }, [isInView]);
+
+  // OPTIMIZATION: Reduced configuration complexity
   const globeConfig = {
-    pointSize: 4,
+    pointSize: 3, // Reduced from 4
     globeColor: "#000017",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
@@ -28,8 +55,20 @@ const GridGlobe = () => {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
+    // OPTIMIZATION: Flag passed to Globe to conditionally enable features
+    isLowPerformanceMode: typeof window !== 'undefined' && window.innerWidth < 768
   };
+
+  // OPTIMIZATION: Reduced number of arcs for mobile
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+
+  // OPTIMIZATION: Create a smaller dataset for lower performance devices
+  const getOptimizedArcs = () => {
+    // Sample data - first 10 arcs for mobile, all for desktop
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return sampleArcs.slice(0, isMobile ? 10 : sampleArcs.length);
+  };
+
   const sampleArcs = [
     {
       order: 1,
@@ -393,17 +432,33 @@ const GridGlobe = () => {
     },
   ];
 
-  return (
-
-    <div className="flex items-center justify-center absolute w-full h-full">
-
-      <div className="Globe-container w-full relative overflow-visible h-full items-center justify-center flex">
-        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-        {/* remove -bottom-20 */}
-        <div className="Globe absolute z-[10] h-[100%] w-56">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+    return (
+    // OPTIMIZATION: Added ref for intersection observer
+    <div ref={containerRef} className="flex items-center justify-center absolute w-full h-full">
+      {/* OPTIMIZATION: Only render the globe when in viewport */}
+      {isInView ? (
+        <div className="Globe-container w-full relative overflow-visible h-full items-center justify-center flex">
+          <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
+          <div className="Globe absolute z-[10] h-[100%] w-56">
+            {/*
+              OPTIMIZATION:
+              1. Added key prop to force complete remount
+              2. This ensures the component is fully destroyed and recreated
+            */}
+            <World
+              key={`globe-instance-${mountKey}`}
+              data={getOptimizedArcs()}
+              globeConfig={globeConfig}
+              isVisible={true}
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        // OPTIMIZATION: Show a placeholder when not in view
+        <div className="h-full w-full flex items-center justify-center">
+          <div className="text-xs text-gray-400">Globe visualization</div>
+        </div>
+      )}
     </div>
   );
 };

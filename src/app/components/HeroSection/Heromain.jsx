@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 import Lamp from './Herolamp'
 import AnimateLamp from '../Section Lamps/AnimateLamp';
 import Midlapm from './lamp'
-import ReactiveOrb from './ReactiveOrb';
 import ImageBox from './imageBox';
 import HeroText from './HeroTextAnimation';
+import ResponsiveAnimatedLamp from '../Section Lamps/ResponsiveAnimatedLamp';
 import '../MediaQuery/largeScreen.css';
 
 
@@ -124,14 +124,26 @@ export default function Heromain() {
       <motion.div variants={fadeIn}>
         <Lamp/>
           <AnimateLamp
+              className=''
+              lightClassName='Animate-lamp-light'
+              beamClassName='Animate-lamp-beam'
               enableStickyEffect={false}
               lightOpacity={1}
               lightColor="#0099FF"
               lightHeight='5rem'
               lightGradient='radial-gradient(circle, rgba(0, 153, 255, 1) 0%, rgba(0, 153, 255, 0.17) 100%)'
               beamGradient='linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%)'
-              containerPosition='Animate-Hero-Lamp'
+              containerPosition='Animate-Hero-Lamp sm:overflow-hidden'
             />
+          {/* <ResponsiveAnimatedLamp
+            lightColor="rgb(128, 0, 255)"
+            lightOpacity={0.4}
+            lightScale={90}
+            enableStickyEffect={false}
+            stickyOffset="-5rem"
+
+          /> */}
+
       </motion.div>
 
       <motion.div
@@ -147,9 +159,9 @@ export default function Heromain() {
         <HeroText/>
       </div>
 
-        <div className='reactive-Orb-container relative w-full h-screen z-[1]'>
-          {/* <ReactiveOrb/> */}
-        </div>
+        {/* <div className='reactive-Orb-container relative w-full h-screen z-[1]'>
+          <ReactiveOrb/>
+        </div> */}
 
       <motion.div
         variants={{
@@ -164,7 +176,7 @@ export default function Heromain() {
             }
           }
         }}
-        className='relative flex items-center justify-center z-10 -mt-4 gap-4'
+        className='Scroll-Down-Container relative flex items-center justify-center z-10 -mt-4 gap-4'
       >
         <div className="scroll-down"></div>
         <h3 className='scroll-text'>Scroll Down to be Amazed !</h3>
@@ -172,12 +184,14 @@ export default function Heromain() {
 
       <motion.div
         variants={fadeIn}
-        className='Lamp-container'
+        className='lamp-container'
       >
         <div className='Mid-Lamp relative flex items-center justify-center z-[2]'>
           <Midlapm/>
         </div>
         <AnimateLamp
+          lightClassName='Animate-lamp-light'
+          beamClassName='Animate-lamp-beam'
           enableStickyEffect={true}
           endTarget={sectionEndRef}
           lightOpacity={0.4}
@@ -186,7 +200,7 @@ export default function Heromain() {
           beamHeight='0px'
           lightGradient='radial-gradient(circle, rgba(0, 153, 255, 1) 0%, rgba(0, 153, 255, 0.17) 100%)'
           beamGradient='linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%)'
-          containerPosition='Animate-Mid-Lamp'
+          containerPosition='Animate-Mid-Lamp overflow-hidden'
         />
         <motion.div
           variants={{

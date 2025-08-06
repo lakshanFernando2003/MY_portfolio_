@@ -1,6 +1,12 @@
 
 @media screen and (min-width: 1021px) and (max-width: 1200px) {
   /* Styles for screens between 1021px and 1200px */
+    .Nav-Panel{
+  }
+
+  .navbar-gap{
+    gap: 30px;
+  }
 
   .Hero-lamp{
    margin-top: -27rem;
@@ -16,6 +22,7 @@
 
  .Hero-text-container{
   transform: translateY(-5rem);
+  scale: 70%;
  }
 
  .Hero-text-main{
@@ -30,7 +37,11 @@
   scale: 70%;
  }
 
- .Lamp-container{
+ .Scroll-Down-Container{
+  margin-top: 5rem !important;
+ }
+
+ .lamp-container{
   margin-top: 5rem;
  }
 
@@ -116,6 +127,15 @@
 
 @media screen and (min-width: 1201px) and (max-width: 1440px) {
   /* Styles for screens between 1201px and 1440px */
+  .Nav-Panel{
+
+  }
+
+  .navbar-gap{
+    gap: 30px;
+  }
+
+
   .Hero-lamp{
    margin-top: -27rem;
   }
@@ -130,21 +150,18 @@
 
  .Hero-text-container{
   transform: translateY(-5rem);
+  scale: 90%;
  }
 
  .Hero-text-main{
   font-size: 11rem;
  }
 
-.reactive-Orb-container{
-  margin-top: -38rem;
-  }
-
- .reactive-Orb-inner{
-  scale: 70%;
+ .Scroll-Down-Container{
+  margin-top: 5rem !important;
  }
 
- .Lamp-container{
+ .lamp-container{
   margin-top: 5rem;
  }
 
@@ -251,15 +268,19 @@
   font-size: 11rem;
  }
 
-.reactive-Orb-container{
+ .Scroll-Down-Container{
+  margin-top: 5rem !important;
+ }
+
+/* .reactive-Orb-container{
   margin-top: -38rem;
   }
 
  .reactive-Orb-inner{
   scale: 70%;
- }
+ } */
 
- .Lamp-container{
+ .lamp-container{
   margin-top: 5rem;
  }
 

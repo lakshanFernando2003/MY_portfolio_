@@ -11,7 +11,7 @@ import Technologies from "./Grid-Content/Technologies";
 import MyStats from "./Grid-Content/MyStats";
 import CommingSoon from "./Grid-Content/CommingSoon";
 import "../MediaQuery/largeScreen.css"
-
+import "../MediaQuery/SmallScreen.css"
 
 // BentoTilt component implementation
 export const BentoTilt = ({ className, children, ...rest }) => {
@@ -135,8 +135,8 @@ export const AboutBentoGrids = () => {
         {/* Section lamp Header */}
         <AnimateLamp
           className=""
-          lightClassName="Bento-Lamp"
-          beamClassName="Bento-Lamp-beam"
+          lightClassName='Animate-lamp-light'
+          beamClassName='Animate-lamp-beam'
           lightOpacity={0.5}
           lightBlur="blur-[48px]"
           enableStickyEffect={true}
@@ -148,10 +148,16 @@ export const AboutBentoGrids = () => {
         variants={fadeIn}
         className="Bento-Grids-Header pointer-events-none w-full flex items-center justify-center z-20"
       >
-        <div className="w-2/5 flex flex-col text-center h-40 gap-2 pointer-events-none">
-          <h2 className="relative pointer-events-none bg-clip-text inline-block font-semibold antialiased tracking-wide font-mono"> Personality </h2>
-          <h1 className="relative pointer-events-none text-[2rem] z-50 bg-clip-text inline-block font-semibold antialiased tracking-tighter font-mono"> Impress,Engage,and Perform </h1>
-          <h3 className="relative pointer-events-none text-[1.2rem] opacity-70 z-50 bg-clip-text inline-block antialiased"> I am a self Motivated person, Always prepare in advance and focused on my goals while enjoying a balance life </h3>
+        <div className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 flex flex-col text-center px-4 sm:px-6 py-4 sm:py-6 gap-2 sm:gap-3 md:gap-4 pointer-events-none">
+          <h2 className="relative pointer-events-none bg-clip-text inline-block font-semibold antialiased tracking-wide font-mono text-sm sm:text-base md:text-[1.1rem] xl:text-[1.2rem]">
+            Personality
+          </h2>
+          <h1 className="relative pointer-events-none text-[2rem] sm:text-2xl md:text-[2rem] z-50 bg-clip-text inline-block font-semibold antialiased tracking-tighter font-mono">
+            Impress, Engage, and Perform
+          </h1>
+          <h3 className="relative pointer-events-none text-[1.2rem]  sm:text-base md:text-[1.2rem] opacity-70 z-50 bg-clip-text inline-block antialiased">
+            I am a self Motivated person, Always prepare in advance and focused on my goals while enjoying a balance life
+          </h3>
         </div>
 
       {/* <div className={`Bento-Light absolute inset-auto z-10 h-[55rem] w-[55rem]

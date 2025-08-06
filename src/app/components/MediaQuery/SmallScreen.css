@@ -1,0 +1,251 @@
+@media screen and (max-width: 768px) {
+  .Hero-lamp{
+   margin-top: -40rem;
+
+  }
+
+  .Animate-Hero-Lamp{
+  margin-top: -40rem;
+  scale: 0.6;
+  width: 100% !important; /* Force full width */
+  left: 0 !important; /* Ensure proper alignment */
+  }
+
+ .Hero-text{
+  margin-top: -6rem;
+  transform: translateY(-2rem);
+
+ }
+
+ .Hero-text-container{
+  transform: translateY(-3rem);
+  }
+
+ .Hero-text-main{
+  font-size: 6rem !important;
+ }
+
+ .Scroll-Down-Container{
+  margin-top: 5rem !important;
+ }
+
+  .scroll-down {
+
+    height: 40px !important;
+    width: 24px !important;
+    bottom: 12% !important;
+  }
+
+  .scroll-text {
+    font-size: 0.7rem !important;
+    bottom: -1.5rem !important;
+  }
+
+ .lamp-container{
+  margin-top: -15rem;
+  transform: translateX(-2rem);
+
+ }
+
+  .Mid-Lamp{
+  transform: translateY(-7rem);
+  scale: 0.5;
+ }
+
+ .lamp-Light {
+  transform: translateY(-5rem);
+  height: 20rem;
+  width: 45rem;
+  opacity: 27%;
+ }
+
+ .lamp-Beam{
+  background: #0099FF;
+  background: linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%);
+  height: 2.4rem;
+  width: 40rem;
+ }
+
+ .Animate-Mid-Lamp{
+  margin-top: -85rem;
+ }
+
+ .Image-Box{
+  margin-top: -42rem;
+  margin-bottom: 4rem;
+ }
+
+ .BG-Gradient{
+  background:
+  /* right */
+  radial-gradient(circle at 68.5714340209961% 32.38101323445638%, #000000 0%, 7.5%, rgba(0, 0, 0, 0) 40%),
+  /* left */
+  radial-gradient(circle at 30.000117619832356% 31.428572336832683%, #000000 0%, 7.5%, rgba(0, 0, 0, 0) 40%),
+  /* center */
+  /* radial-gradient(circle at 49.04762268066406% 40.00008900960286%, #000000 0%, 6%, rgba(0, 0, 0, 0) 45%), */
+  /* center right */
+  radial-gradient(circle at 66.04762268066406% 50.00008900960286%, #000000 0%, 20.5%, rgba(0, 0, 0, 0) 35%),
+  /* center left */
+  radial-gradient(circle at 35.04762268066406% 50.00008900960286%, #000000 0%, 20.5%, rgba(0, 0, 0, 0) 35%),
+  /* center bottom */
+  radial-gradient(circle at 49.04762268066406% 60.00008900960286%, #000000 0%, 29%, rgba(0, 0, 0, 0) 43%),
+  /* top left */
+  radial-gradient(circle at 18.09535503387451% 0%, #000000 0%, 33.75%, rgba(0, 0, 0, 0) 50%),
+  /* top right */
+  radial-gradient(circle at 77.38095601399739% 0%, #000000 0%, 33.75%, rgba(0, 0, 0, 0) 50%),
+  radial-gradient(circle at 48.9013671875% 49.521484375%, rgba(255, 255, 255, 0) 0%, rgba(255,255,255,.1)100%);
+ }
+
+ .About-card{
+  margin-top: -62.5rem;
+ }
+
+ .About-container{
+  width: 90% !important;
+  scale: 100%;
+ }
+
+ .project-animated-component{
+  /* transform: translateX(-10rem) !important; */
+  scale: 0.6;
+  width: 100% !important;
+  height: 100% !important;
+ }
+
+ /* Improve fixed lamp positioning */
+ .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
+   left: 50% !important;
+   max-width: 92vw !important;
+   transform: translate(-50%, 0) scale(0.6) !important;
+ }
+}
+
+/* Extra Small Devices (under 480px) */
+@media screen and (max-width: 480px) {
+  /* Further reduce lamp size for very small screens */
+  .Hero-lamp{
+   margin-top: -40rem;
+  }
+
+  .Animate-lamp-light{
+    width: 30rem !important; /* Adjusted width for small screens */
+  }
+
+  .Animate-lamp-beam{
+    width: 35rem !important; /* Adjusted width for small screens */
+  }
+
+  .Animate-Hero-Lamp{
+  margin-top: -40rem;
+  scale: 0.6;
+  width: 10% !important;
+  }
+
+ .Hero-text{
+  margin-top: -6rem;
+  transform: translateY(-2rem);
+
+ }
+
+ .Hero-text-container{
+  transform: translateY(-3rem);
+  }
+
+ .Hero-text-main{
+  font-size: 6rem !important;
+ }
+
+ .Scroll-Down-Container{
+  margin-top: 5rem !important;
+ }
+
+  .scroll-down {
+
+    height: 40px !important;
+    width: 24px !important;
+    bottom: 12% !important;
+  }
+
+  .scroll-text {
+    font-size: 0.7rem !important;
+    bottom: -1.5rem !important;
+  }
+
+ .lamp-container{
+  margin-top: -15rem;
+  transform: translateX(-2rem);
+
+ }
+
+  .Mid-Lamp{
+  transform: translateY(-7rem);
+  scale: 0.5;
+ }
+
+ .lamp-Light {
+  transform: translateY(-5rem);
+  height: 20rem;
+  width: 45rem;
+  opacity: 27%;
+ }
+
+ .lamp-Beam{
+  background: #0099FF;
+  background: linear-gradient(90deg, rgba(0, 153, 255, 0) 0%, rgba(0, 153, 255, 0.4) 15%, rgba(0, 153, 255, 0.65) 30%, rgba(0, 153, 255, 0.8) 40%, rgba(0, 153, 255, 1) 50%, rgba(0, 153, 255, 0.8) 60%, rgba(0, 153, 255, 0.65) 70%, rgba(0, 153, 255, 0.4) 85%, rgba(0, 153, 255, 0) 100%);
+  height: 2.4rem;
+  width: 40rem;
+ }
+
+ .Animate-Mid-Lamp{
+  margin-top: -85rem;
+ }
+
+ .Image-Box{
+  margin-top: -22rem;
+  margin-bottom: 4rem;
+ }
+
+ .BG-Gradient{
+  background:
+  /* right */
+  radial-gradient(circle at 68.5714340209961% 32.38101323445638%, #000000 0%, 7.5%, rgba(0, 0, 0, 0) 40%),
+  /* left */
+  radial-gradient(circle at 30.000117619832356% 31.428572336832683%, #000000 0%, 7.5%, rgba(0, 0, 0, 0) 40%),
+  /* center */
+  /* radial-gradient(circle at 49.04762268066406% 40.00008900960286%, #000000 0%, 6%, rgba(0, 0, 0, 0) 45%), */
+  /* center right */
+  radial-gradient(circle at 66.04762268066406% 50.00008900960286%, #000000 0%, 20.5%, rgba(0, 0, 0, 0) 35%),
+  /* center left */
+  radial-gradient(circle at 35.04762268066406% 50.00008900960286%, #000000 0%, 20.5%, rgba(0, 0, 0, 0) 35%),
+  /* center bottom */
+  radial-gradient(circle at 49.04762268066406% 60.00008900960286%, #000000 0%, 29%, rgba(0, 0, 0, 0) 43%),
+  /* top left */
+  radial-gradient(circle at 18.09535503387451% 0%, #000000 0%, 33.75%, rgba(0, 0, 0, 0) 50%),
+  /* top right */
+  radial-gradient(circle at 77.38095601399739% 0%, #000000 0%, 33.75%, rgba(0, 0, 0, 0) 50%),
+  radial-gradient(circle at 48.9013671875% 49.521484375%, rgba(255, 255, 255, 0) 0%, rgba(255,255,255,.1)100%);
+ }
+
+ .About-card{
+  margin-top: -62.5rem;
+ }
+
+ .About-container{
+  width: 90% !important;
+  scale: 100%;
+ }
+
+ .project-animated-component{
+  /* transform: translateX(-10rem) !important; */
+  scale: 0.6;
+  width: 100% !important;
+  height: 100% !important;
+ }
+
+ /* Improve fixed lamp positioning */
+ .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
+   left: 50% !important;
+   max-width: 92vw !important;
+   transform: translate(-50%, 0) scale(0.6) !important;
+ }
+}

@@ -9,13 +9,9 @@ import RoadMap from './components/RoadMap/RoadMap';
 import ContactMe from './components/ContactMe/ContactMe';
 import Footer from './components/Footer/Footer';
 import Loading from './components/Loading/Loading';
-
 import Customecursor from "./cursor-effect/customecursor";
 import ScrollProvider from "./hooks/ScrollContext";
-// import Skills from './components/Skills/Skills';
-// import Hbar from "./components/About/Hbar";
-// import HorizontalBar from "./components/About/horizontalBar";
-// import Contentoverlap from "./components/test/contentoverlap";
+
 
 import Maintenance from "./components/test/maintanence";
 import { siteConfig } from "./config/config";

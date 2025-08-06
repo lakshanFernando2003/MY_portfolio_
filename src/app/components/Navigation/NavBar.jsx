@@ -4,10 +4,13 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 import { AnimatePresence, motion } from "framer-motion";
 import Magnet from '../Animations/Magnet';
+import "../MediaQuery/largeScreen.css"
+import "../MediaQuery/SmallScreen.css"
 
 export default function NavBar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hoveredItemDimensions, setHoveredItemDimensions] = useState({ width: 0, left: 0 });
+  const [isOpen, setIsOpen] = useState(false);
   const itemRefs = useRef([]);
 
   // Animation variants for entrance effects
@@ -43,12 +46,58 @@ export default function NavBar() {
     }
   };
 
+  // Mobile menu animation variants
+  const mobileMenuVariants = {
+    closed: {
+      opacity: 0,
+      y: "-100%",
+      transition: {
+        duration: 0.5,
+        ease: [0.76, 0, 0.24, 1],
+        staggerChildren: 0.1,
+        staggerDirection: -1
+      }
+    },
+    open: {
+      opacity: 1,
+      y: "0%",
+      transition: {
+        duration: 0.7,
+        ease: [0.76, 0, 0.24, 1],
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const mobileItemVariants = {
+    closed: { opacity: 0, y: -20 },
+    open: { opacity: 1, y: 0 }
+  };
+
+  // Hamburger menu button variants
+  const hamburgerVariants = {
+    closed: { rotate: 0 },
+    open: { rotate: 90 }
+  };
+
   useEffect(() => {
     // Register ScrollToPlugin
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollToPlugin);
     }
-  }, []);
+
+    // Prevent scrolling when mobile menu is open
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "hidden";
+    };
+  }, [isOpen]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -67,6 +116,11 @@ export default function NavBar() {
         },
         ease: "power3.inOut"  // Smooth easing function for natural feel
       });
+
+      // Close mobile menu if open
+      if (isOpen) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -99,28 +153,29 @@ export default function NavBar() {
       animate="visible"
       variants={containerVariants}
     >
-      {/* TOP LEFT logo */}
+      {/* TOP LEFT logo - visible ONLY on mobile screens */}
       <motion.div
         variants={itemVariants}
-        className='left-5 mt-3 absolute flex items-center gap-2 p-1'
+        className='left-5 mt-15 absolute flex items-center gap-2 p-1 z-50 lg:hidden'
       >
-        <div className='opacity-0 flex h-9 w-20 relative overflow-hidden'>
+        <div className='flex h-9 w-9 relative overflow-hidden'>
           <Image
-            className=""
-            src="/images/"
-            alt="logo"
+            className="rounded-full"
+            src="/images/my-Self-1.jpg"
+            alt="profile image"
             fill={true}
             priority={true}
           />
         </div>
+        <h1 className='text-lg capitalize text-white'>LakshaN</h1>
       </motion.div>
 
-      {/* Navigation panel */}
+      {/* Desktop Navigation - hidden on screens below lg breakpoint */}
       <motion.nav
         variants={itemVariants}
-        className="mt-3 bg-gradient-to-r from-black/60 via-cyan-500/1 to-black/50 border border-white/20 justify-center items-center rounded-full backdrop-blur-3xl shadow-lg"
+        className="hidden lg:flex Nav-Panel mt-3 bg-gradient-to-r from-black/60 via-cyan-500/1 to-black/50 border border-white/20 justify-center items-center rounded-full backdrop-blur-3xl shadow-lg"
       >
-        <div className="flex items-center justify-around w-full px-4 py-[1.5px] gap-40">
+        <div className="navbar-gap flex items-center justify-around w-full px-4 py-[1.5px] gap-40">
           <motion.div
             variants={itemVariants}
             className='flex items-center gap-2 p-1 ml-[-0.9rem]'
@@ -132,8 +187,7 @@ export default function NavBar() {
                 alt="intro image"
                 fill={true}
                 priority={true}
-              >
-              </Image>
+              />
             </div>
             <h1 className='text-lg capitalize'>LakshaN</h1>
           </motion.div>
@@ -173,7 +227,7 @@ export default function NavBar() {
                 variants={itemVariants}
               >
                 <span
-                  className="block py-2 px-4 relative z-10 transition-colors duration-200"
+                  className="block py-2 px-4 relative z-10 transition-colors duration-200 cursor-pointer"
                   style={{ color: hoveredIndex === idx ? 'black' : 'white' }}
                   onClick={() => scrollToSection(item.id)}
                 >
@@ -187,16 +241,125 @@ export default function NavBar() {
             variants={itemVariants}
             className='items-center relative'
           >
-            <a className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s]' onClick={() => scrollToSection('contactMe')}>
+            <a
+              className='flex justify-center items-center border border-white/20 bg-[rgb(26_26_26_/_60%)] backdrop-blur-3xl shadow-lg py-2.5 pr-7 pl-7 rounded-full mr-[-0.59rem] hover:bg-[rgb(255_255_255_/_80%)] hover:text-black transition-all duration-[0.4s] cursor-pointer'
+              onClick={() => scrollToSection('contactMe')}
+            >
               <span className='text-xs'>Let's Connect</span>
             </a>
           </motion.div>
         </div>
       </motion.nav>
 
-      {/* Social links buttons */}
+      {/* Mobile menu toggle button - only visible on screens below lg breakpoint */}
       <motion.div
-        className='mt-4 right-5 absolute flex items-center justify-center gap-3'
+        className="absolute right-5 top-5 z-50 block lg:hidden"
+        variants={itemVariants}
+      >
+        <motion.button
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-[rgb(26_26_26_/_80%)] border border-white/20 backdrop-blur-3xl text-white"
+          onClick={() => setIsOpen(!isOpen)}
+          animate={isOpen ? "open" : "closed"}
+          variants={hamburgerVariants}
+          transition={{ duration: 0.3 }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {isOpen ? (
+              <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            ) : (
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            )}
+          </svg>
+        </motion.button>
+      </motion.div>
+
+      {/* Mobile navigation menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-40 overflow-hidden lg:hidden"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={mobileMenuVariants}
+          >
+            <div className="flex flex-col items-center justify-center h-full">
+              <motion.div className="flex flex-col items-center gap-8 w-full">
+                {navItems.map((item, idx) => (
+                  <motion.div
+                    key={item.id}
+                    variants={mobileItemVariants}
+                    className="text-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span
+                      className="text-white text-2xl font-bold cursor-pointer"
+                      onClick={() => scrollToSection(item.id)}
+                    >
+                      {item.label}
+                    </span>
+                  </motion.div>
+                ))}
+                <motion.div
+                  variants={mobileItemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-4"
+                >
+                  <a
+                    className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold cursor-pointer"
+                    onClick={() => scrollToSection('contactMe')}
+                  >
+                    Let's Connect
+                  </a>
+                </motion.div>
+
+                {/* Social links in mobile menu */}
+                <motion.div
+                  className="flex gap-6 mt-10"
+                  variants={mobileItemVariants}
+                >
+                  <a
+                    href="http://www.linkedin.com/in/-lakshan-fernando"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center h-12 w-12 bg-[rgb(40_40_40_/_60%)] hover:bg-blue-600 transition-colors duration-300 rounded-full border border-white/20"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://github.com/lakshanFernando2003"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center h-12 w-12 bg-[rgb(40_40_40_/_60%)] hover:bg-gray-700 transition-colors duration-300 rounded-full border border-white/20"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/_laksh__an_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center h-12 w-12 bg-[rgb(40_40_40_/_60%)] hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 transition-colors duration-300 rounded-full border border-white/20"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Social links buttons - only show on desktop */}
+      <motion.div
+        className='mt-4 right-5 absolute hidden lg:flex items-center justify-center gap-3'
         variants={{
           hidden: { opacity: 0 },
           visible: {
@@ -254,5 +417,5 @@ export default function NavBar() {
         </motion.div>
       </motion.div>
     </motion.div>
-  )
+  );
 }

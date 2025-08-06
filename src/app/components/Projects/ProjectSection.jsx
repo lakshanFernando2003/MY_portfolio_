@@ -1,12 +1,12 @@
 import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import AnimateLamp from "../Section Lamps/AnimateLamp";
 import "../MediaQuery/largeScreen.css";
+import "../MediaQuery/SmallScreen.css"
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import BentoCard from "../About/BentoCard";
-import { motion } from "framer-motion";
 import BubbleBackground from '../Animations/BubbleBackground';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -332,7 +332,7 @@ export default function ProjectSection() {
         </div>
       </div>
 
-      <div className="h-[80vh] w-screen z-20" id="project-container" ref={projectContainerRef}>
+      <div className="h-[50vh] sm:h-[50vh] md:h-[80vh] w-screen z-20" id="project-container" ref={projectContainerRef}>
         <div
           ref={projectComponentRef}
           className="project-animated-component bg-neutral-800 w-[600px] h-[600px] mx-auto rounded-lg overflow-hidden relative "
@@ -371,7 +371,7 @@ export default function ProjectSection() {
                   intensity="veryStrong"
                   interactive={true}
                   colorChangeInterval={5000}
-                  mouseAreaRadius={200}
+                  mouseAreaRadius={300}
                   showMouseArea={false}
                   globalMovementFactor={1}  // Adjust global movement strength (0 to disable)
                   randomMovement={true}       // Enable/disable random floating animation
