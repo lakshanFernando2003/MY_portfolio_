@@ -144,7 +144,7 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
       scrollTrigger: {
         trigger: ".timeline",
         start: "top center",
-        end: "90% center",
+        end: "80% center",
         markers: false,
         onUpdate: (self) => {
           gsap.to(".timeline", {
@@ -164,7 +164,7 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
 
       ScrollTrigger.create({
         trigger: cardWrapper,
-        start: "top 70%",
+        start: "top 50%",
         end: "bottom 20%",
         markers: true,
         toggleActions: "play reverse play reverse",

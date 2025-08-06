@@ -156,7 +156,7 @@ export default function NavBar() {
       {/* TOP LEFT logo - visible ONLY on mobile screens */}
       <motion.div
         variants={itemVariants}
-        className='left-5 mt-15 absolute flex items-center gap-2 p-1 z-50 lg:hidden'
+        className='left-5 mt-20 absolute flex items-center gap-2 p-1 z-50 lg:hidden'
       >
         <div className='flex h-9 w-9 relative overflow-hidden'>
           <Image
