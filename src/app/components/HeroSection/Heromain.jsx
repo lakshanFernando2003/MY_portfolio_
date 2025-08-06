@@ -5,7 +5,6 @@ import AnimateLamp from '../Section Lamps/AnimateLamp';
 import Midlapm from './lamp'
 import ImageBox from './imageBox';
 import HeroText from './HeroTextAnimation';
-import ResponsiveAnimatedLamp from '../Section Lamps/ResponsiveAnimatedLamp';
 import '../MediaQuery/largeScreen.css';
 
 

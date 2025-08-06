@@ -172,13 +172,13 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
           // Animate roadmap card from right (like desktop right element)
           gsap.fromTo(roadmapCard,
             { x: -100, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }
+            { x: 0, opacity: 0, duration: 0.7, ease: "power2.out" }
           );
 
           // Animate timeline logo with bounce effect (same as desktop)
           gsap.fromTo(timelineLogo,
             { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+            { scale: 1, opacity: 0, duration: 0.5, ease: "back.out(1.7)" }
           );
         },
         onLeaveBack: () => {
