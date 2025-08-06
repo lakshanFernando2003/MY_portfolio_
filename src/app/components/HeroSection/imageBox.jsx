@@ -1,4 +1,6 @@
 import Image from "next/image"
+import "../MediaQuery/largeScreen.css"
+import "../MediaQuery/SmallScreen.css"
 
 const Images =[
   "MobileLearning.jpg",
@@ -33,7 +35,7 @@ import React from 'react'
 
 export default function imageBox() {
   return (
-    <div className="relative w-full mb-2 ">
+    <div className="relative w-full mb-2">
       {/* Content div - positioned behind */}
       <div className="w-full flex flex-col items-center overflow-hidden z-0 relative">
       {/* First row - 5 full images */}
@@ -46,6 +48,7 @@ export default function imageBox() {
               width={309}
               height={405}
               style={ImageStyles}
+              className="image-Box-Picture"
             />
           </div>
         ))}
@@ -61,6 +64,7 @@ export default function imageBox() {
               width={309}
               height={405}
               style={ImageStyles}
+              className="image-Box-Picture"
             />
           </div>
         ))}
@@ -76,6 +80,7 @@ export default function imageBox() {
               width={309}
               height={405}
               style={ImageStyles}
+              className="image-Box-Picture"
             />
           </div>
         ))}

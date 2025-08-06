@@ -52,7 +52,7 @@ html {
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   html, body {
     overflow-y: auto !important;
     overscroll-behavior-y: auto !important;

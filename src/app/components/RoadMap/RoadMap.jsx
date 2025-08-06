@@ -166,7 +166,7 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
         trigger: cardWrapper,
         start: "top 50%",
         end: "bottom 20%",
-        markers: true,
+        markers: false,
         toggleActions: "play reverse play reverse",
         onEnter: () => {
           // Animate roadmap card from right (like desktop right element)

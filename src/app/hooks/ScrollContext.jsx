@@ -16,7 +16,7 @@ export default function ScrollProvider ({children}) {
   useEffect(() => {
     // Check if on mobile/tablet (match the same breakpoint as CSS)
     const isSmallDevice = typeof window !== 'undefined' &&
-      window.matchMedia("(max-width: 1000px)").matches;
+      window.matchMedia("(max-width: 1200px)").matches;
 
     // Configure Lenis differently based on device
     const scroller = new Lenis({
@@ -32,7 +32,7 @@ export default function ScrollProvider ({children}) {
 
     // Listen for device orientation changes
     const handleResize = () => {
-      const newIsSmallDevice = window.matchMedia("(max-width: 1000px)").matches;
+      const newIsSmallDevice = window.matchMedia("(max-width: 1200px)").matches;
       document.body.style.overflow = newIsSmallDevice ? 'auto' : 'hidden';
 
       // Update Lenis settings on resize if needed

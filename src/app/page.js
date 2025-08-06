@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     // Check if on mobile/tablet
-    const isSmallDevice = typeof window !== 'undefined' && window.matchMedia("(max-width: 1000px)").matches;
+    const isSmallDevice = typeof window !== 'undefined' && window.matchMedia("(max-width: 1200px)").matches;
 
     if (isLoading) {
       // Always hide scrolling during loading
@@ -36,7 +36,7 @@ export default function Home() {
     return () => {
       // Reset based on device when component unmounts
       if (typeof window !== 'undefined') {
-        const isSmallDevice = window.matchMedia("(max-width: 1000px)").matches;
+        const isSmallDevice = window.matchMedia("(max-width: 1200px)").matches;
         document.body.style.overflow = isSmallDevice ? 'auto' : 'hidden';
       }
     };

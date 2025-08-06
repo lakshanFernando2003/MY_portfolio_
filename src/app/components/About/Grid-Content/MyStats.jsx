@@ -22,48 +22,47 @@ export default function MyStats() {
     setGridCells(cells);
   }, []);
 
-  // Enhanced personal stats with custom grid spans
+  // Enhanced personal stats with proper responsive grid spans
   const personalStats = [
     {
       label: "Age",
       value: "22",
-      colSpan: "col-span-1",
+      colSpan: "col-span-1 sm:col-span-2 md:col-span-1",
       rowSpan: "row-span-1",
       bgColor: "from-blue-500/20 to-cyan-400/20"
     },
     {
       label: "Country",
       value: "Sri Lanka",
-      colSpan: "col-span-2",
+      colSpan: "col-span-1 sm:col-span-2 md:col-span-2",
       rowSpan: "row-span-1",
       bgColor: "from-purple-500/20 to-pink-400/20"
     },
     {
       label: "Degrees",
       value: "B.Sc. in Computer Science",
-      colSpan: "col-span-3",
+      colSpan: "col-span-2 sm:col-span-4 md:col-span-3",
       rowSpan: "row-span-2",
       bgColor: "from-indigo-500/20 to-violet-400/20"
     },
-
     {
       label: "University",
       value: "Informatics Institute of Technology (IIT)",
-      colSpan: "col-span-2",
+      colSpan: "col-span-2 sm:col-span-3 md:col-span-2",
       rowSpan: "row-span-1",
       bgColor: "from-amber-500/20 to-orange-400/20"
     },
     {
       label: "Residence",
       value: "Mount-Lavinia",
-      colSpan: "col-span-1",
+      colSpan: "col-span-2 sm:col-span-1 md:col-span-1",
       rowSpan: "row-span-1",
       bgColor: "from-emerald-500/20 to-teal-400/20"
     },
     {
       label: "Current Status",
       value: "Searching for Internships",
-      colSpan: "col-span-6",
+      colSpan: "col-span-2 sm:col-span-4 md:col-span-6",
       rowSpan: "row-span-1",
       bgColor: "from-rose-500/20 to-red-400/20"
     }
@@ -102,7 +101,7 @@ export default function MyStats() {
       </div>
 
       {/* Content Container with scrolling */}
-      <div className="relative h-full p-2 z-10 flex flex-col">
+      <div className="relative h-full p-1 sm:p-2 z-10 flex flex-col">
         <motion.div
           className="mb-3"
           initial={{ opacity: 0, y: -20 }}
@@ -113,13 +112,13 @@ export default function MyStats() {
         </motion.div>
 
         {/* Scrollable content area */}
-        <div className="flex-grow pr-2">
-          {/* Grid with custom layout */}
-          <div className="grid grid-cols-6 auto-rows-min gap-3 pb-4">
+        <div className="flex-grow overflow-y-auto pr-1 sm:pr-2">
+          {/* Grid with responsive columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 auto-rows-min gap-2 sm:gap-3 pb-2 sm:pb-4">
             {personalStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className={`${stat.colSpan} ${stat.rowSpan} backdrop-blur-sm bg-white/5 border border-white/10 rounded-lg p-3 overflow-hidden relative group`}
+                className={`${stat.colSpan} ${stat.rowSpan} backdrop-blur-sm bg-white/5 border border-white/10 rounded-lg p-2 sm:p-3 overflow-hidden relative group`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -144,13 +143,13 @@ export default function MyStats() {
                 >
                   <div>
                     <motion.p
-                      className="text-gray-400 text-sm font-medium"
+                      className="text-gray-400 text-xs sm:text-sm font-medium"
                       whileHover={{ color: "#ffffff" }}
                     >
                       {stat.label}
                     </motion.p>
                     <motion.p
-                      className="text-white text-lg font-bold mt-1"
+                      className="text-white text-sm sm:text-base md:text-lg font-bold mt-1"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -158,14 +157,14 @@ export default function MyStats() {
                     </motion.p>
                   </div>
 
-                  {/* Show icon on hover */}
+                  {/* Show icon on hover - hide on mobile */}
                   <motion.div
-                    className="text-white/0 group-hover:text-white/80 self-end mt-2"
+                    className="text-white/0 group-hover:text-white/80 self-end mt-1 sm:mt-2 hidden sm:block"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileHover={{ opacity: 1, scale: 1 }}
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"

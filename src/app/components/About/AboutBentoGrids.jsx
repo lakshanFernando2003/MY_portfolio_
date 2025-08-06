@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import PropTypes from 'prop-types';
@@ -17,9 +17,21 @@ import "../MediaQuery/SmallScreen.css"
 export const BentoTilt = ({ className, children, ...rest }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if we're on a mobile device
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseMove = (event) => {
-    if (!itemRef.current) return;
+    if (!itemRef.current || isMobile) return;
 
     const { left, top, width, height } =
       itemRef.current.getBoundingClientRect();
@@ -131,12 +143,12 @@ export const AboutBentoGrids = () => {
       variants={containerVariants}
       className="Bento-Grids w-full h-auto flex flex-col items-center justify-center z relative"
     >
-      <motion.div variants={fadeIn} className="w-full h-[30vh] overflow-hidden">
+      <motion.div variants={fadeIn} className="About-lamp w-full h-[30vh] overflow-hidden">
         {/* Section lamp Header */}
         <AnimateLamp
           className=""
-          lightClassName='Animate-lamp-light'
-          beamClassName='Animate-lamp-beam'
+          lightClassName='Animate-lamp-light '
+          beamClassName='Animate-lamp-beam About-lamp-beam'
           lightOpacity={0.5}
           lightBlur="blur-[48px]"
           enableStickyEffect={true}
@@ -202,9 +214,9 @@ export const AboutBentoGrids = () => {
         </div> */}
 
         {/* Grid layout for smaller tiles */}
-        <div className="grid h-[80vh] w-full grid-cols-5 grid-rows-2 gap-3">
-          {/* animate from left to Initial original position */}
-          <div className="row-span-1 md:col-span-1 md:row-span-2 overflow-visible">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 grid-rows-auto sm:grid-rows-2 md:grid-rows-2 gap-6 sm:gap-[5rem] md:gap-3 h-auto md:h-[80vh] w-full">
+          {/* Profile image section */}
+          <div className="col-span-1 row-span-1 md:col-span-1 md:row-span-2 overflow-visible h-[150px] sm:h-auto">
             <motion.div
               className="h-full w-full"
               variants={itemFromLeft}
@@ -215,26 +227,26 @@ export const AboutBentoGrids = () => {
               {/* customizable content */}
               <div className="flex flex-col items-center justify-center h-full w-full p-1 relative overflow-visible">
                 {/* Background image with overlay */}
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 About-Pic-container">
                   <Image
                     src={`/images/My-Selfcoloredit.png`}
                     alt={`Profile Background`}
                     fill
-                    className="-translate-y-15 object-cover object-center overflow-visible opacity-30"
+                    className="About-m-pic -translate-y-15 object-cover object-center overflow-visible opacity-30"
                     priority
                   />
                 </div>
 
                 {/* Content that would go on top of the background image */}
-                <div className="relative z-20 text-white p-4 w-full h-full flex flex-col justify-end">
-                  <p className="text-sm opacity-50 font-semibold -ml-5">Software Developer & Designer</p>
+                <div className="relative z-20 text-white p-4 w-full h-full flex flex-col justify-end sm:justify-center">
+                  <p className="pic-dec text-sm opacity-50 font-semibold -ml-5">Software Developer & Designer</p>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* animate from left to Initial original position */}
-          <BentoTilt className="border-gray-500 border-0 bento-tilt_3 row-span-1 ms-32 md:col-span-2 md:ms-0 overflow-visible">
+          {/* Stats section */}
+          <BentoTilt className="stat-card border-gray-500 border-0 bento-tilt_3 col-span-1 row-span-1 sm:col-span-1 md:col-span-2 md:ms-0 overflow-visible h-[300px] sm:h-auto ">
             <motion.div
               className="-mt-15"
               variants={itemFromLeft}
@@ -248,21 +260,20 @@ export const AboutBentoGrids = () => {
             </motion.div>
           </BentoTilt>
 
-          {/* animate from right to Initial original position */}
+          {/* Globe section */}
           <BentoTilt
-            className="border-neutral-800 border-1 rounded-2xl  bento-tilt_4 me-14 md:col-span-2 md:me-0"
+            className="border-neutral-800 border-1 rounded-2xl bento-tilt_4 col-span-1 row-span-1 sm:col-span-1 md:col-span-2 md:me-0 h-[220px] sm:h-auto"
             variants={itemFromRight}
             style={{
               y: useTransform(scrollYProgress, [0, 1], [0, -35])
             }}
           >
             <BentoCard>
-
-              <div className="h-full w-full pointer-events-none">
-                  <h3 className="Globe-Text-top text-5xl font-anton p-5">24/7-H Availability</h3>
-                  <GridGlobe className="w-full" />
-                  <h3 className="Globe-Text-bottom absolute text-left bottom-1 text-5xl font-anton p-5 z-10">Flexible working on any Time - Zone</h3>
-                </div>
+              <div className="h-full w-full pointer-events-none mobile-globe-container">
+                <h3 className="Globe-Text-top text-3xl sm:text-4xl md:text-5xl font-anton p-2 sm:p-5">24/7-H Availability</h3>
+                <GridGlobe className="w-full" />
+                <h3 className="Globe-Text-bottom absolute text-left bottom-1 text-3xl sm:text-4xl md:text-5xl font-anton p-2 sm:p-5 z-10">Flexible working on any Time - Zone</h3>
+              </div>
             </BentoCard>
           </BentoTilt>
 
@@ -291,17 +302,16 @@ export const AboutBentoGrids = () => {
               }}
             >
               <BentoCard>
-               <Collabaration /> {/* content component */}
+                <Collabaration />
               </BentoCard>
             </motion.div>
           </div>
 
-          {/* animate from right to Initial original position */}
-          <BentoTilt className="border-neutral-800 border-1 rounded-br-2xl rounded-tl-2xl bento-tilt_5 md:col-span-3">
-              <BentoCard>
-                <Technologies/>
-              </BentoCard>
-
+          {/* Technologies section */}
+          <BentoTilt className="border-neutral-800 border-1 rounded-br-2xl rounded-tl-2xl bento-tilt_5 col-span-1 row-span-1 sm:col-span-1 md:col-span-3 h-[400px] sm:h-auto">
+            <BentoCard>
+              <Technologies/>
+            </BentoCard>
           </BentoTilt>
         </div>
       </div>
