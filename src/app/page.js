@@ -22,15 +22,23 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Disable scrolling while loading
+    // Check if on mobile/tablet
+    const isSmallDevice = typeof window !== 'undefined' && window.matchMedia("(max-width: 1000px)").matches;
+
     if (isLoading) {
+      // Always hide scrolling during loading
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'hidden';
+      // After loading: auto for mobile/tablet, hidden for desktop
+      document.body.style.overflow = isSmallDevice ? 'auto' : 'hidden';
     }
 
     return () => {
-      document.body.style.overflow = 'hidden';
+      // Reset based on device when component unmounts
+      if (typeof window !== 'undefined') {
+        const isSmallDevice = window.matchMedia("(max-width: 1000px)").matches;
+        document.body.style.overflow = isSmallDevice ? 'auto' : 'hidden';
+      }
     };
   }, [isLoading]);
 
