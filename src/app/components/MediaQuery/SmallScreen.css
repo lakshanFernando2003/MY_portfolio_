@@ -456,13 +456,11 @@
     padding: 0.5rem !important;
   }
 
- .About-Pic-container{
-  overflow: visible;
- }
-
  .About-m-pic{
+  overflow: visible;
   margin-left: 2rem;
-  transform: translateY(5rem);
+  transform: translateY(-5rem);
+  height: auto !important;
  }
 
  .stat-card{
@@ -656,13 +654,9 @@
     padding: 0.5rem !important;
   }
 
- .About-Pic-container{
-
- }
-
  .About-m-pic{
   margin-left: 2rem;
-  transform: translateY(3rem);
+  transform: translateY(-5rem);
  }
 
  .stat-card{
@@ -837,13 +831,9 @@
     padding: 0.5rem !important;
   }
 
- .About-Pic-container{
-
- }
-
  .About-m-pic{
   margin-left: 1rem;
-  transform: translateY(2rem);
+  transform: translateY(-5rem);
  }
 
  .stat-card{
