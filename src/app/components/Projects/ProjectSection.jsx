@@ -324,7 +324,7 @@ export default function ProjectSection() {
           Development <span className="text-blue-400">Portfolio</span>
         </h1>
 
-        <div className="text-center max-w-3xl mx-auto px-4">
+        <div className="project-heading-text text-center max-w-3xl mx-auto px-4">
           <p className="relative pointer-events-none text-[1.2rem] opacity-70 z-50 bg-clip-text inline-block antialiased">A showcase of my technical projects and solutions</p>
           <p className="relative pointer-events-none text-[1.2rem] opacity-70 z-50 bg-clip-text inline-block antialiased">
             Featuring web applications, interactive experiences, and software development work

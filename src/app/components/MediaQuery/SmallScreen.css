@@ -318,7 +318,7 @@
   .Animate-Hero-Lamp{
   margin-top: -45rem;
   scale: 0.6;
-  width: 10% !important;
+  width: 100% !important;
   }
 
  .Hero-text{
@@ -497,6 +497,25 @@
     opacity: 0;
   }
 
+  .project-animated-component{
+  /* transform: translateX(-10rem) !important; */
+  scale: 0.6;
+  width: 100% !important;
+  height: 100% !important;
+ }
+
+ .project-heading-text{
+  margin-left: -0.5rem;
+  width: 104% !important;
+ }
+
+ /* Improve fixed lamp positioning */
+ .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
+   left: 50% !important;
+   max-width: 92vw !important;
+   transform: translate(-50%, 0) scale(0.6) !important;
+ }
+
 }
 
 /* Extra Small Devices (under 395px) */
@@ -504,8 +523,7 @@
   /* Further reduce lamp size for very small screens */
   .Hero-lamp{
    margin-top: -28rem;
-   opacity: 0;
-   visibility: hidden;
+
   }
 
   .Animate-lamp-light{
@@ -514,7 +532,7 @@
 
   .Animate-lamp-beam{
     width: 35rem !important; /* Adjusted width for small screens */
-    height: 1.5rem !important; /* Adjusted height for small screens */
+    height: 1.5rem !important;
   }
 
   .Animate-Hero-Lamp{
@@ -564,7 +582,7 @@
  .lamp-Light {
   height: 40rem;
   width: 65rem;
-  opacity: 20%;
+  opacity: 25%;
  }
 
  .lamp-Beam{
@@ -574,17 +592,12 @@
   width: 40rem;
  }
 
- .Animate-Mid-Lamp{
-  opacity: 0;
- }
-
  .Image-Box{
-  margin-top: -28rem;
+  margin-top: -29rem;
   margin-bottom: 1rem;
  }
 
  .BG-Gradient{
-  /* scale: 0.8; */
   background:
   /* right */
   radial-gradient(circle at 68.5714340209961% 32.38101323445638%, #000000 0%, 1.7%, rgba(0, 0, 0, 0) 40%),
@@ -610,12 +623,12 @@
  }
 
  .About-container{
-  width: 90% !important;
+  width: 100% !important;
   scale: 100%;
  }
 
  .About-lamp{
-  margin-top: 1.2rem;
+  margin-top: 1.7rem;
  }
 
  .About-lamp-beam{
@@ -668,10 +681,26 @@
   opacity: 0;
  }
 
- .mobile-globe-container .Globe-Text-top,
-  .mobile-globe-container .Globe-Text-bottom {
-    font-size: 2rem !important;
-  }
+ .project-animated-component{
+  /* transform: translateX(-10rem) !important; */
+  scale: 0.6;
+  width: 100% !important;
+  height: 100% !important;
+ }
+
+ .project-heading-text{
+  margin-left: 1rem;
+  width: 90% !important;
+ }
+
+
+ /* Improve fixed lamp positioning */
+ .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
+   left: 50% !important;
+   max-width: 92vw !important;
+   transform: translate(-50%, 0) scale(0.6) !important;
+ }
+
 
 }
 
@@ -679,10 +708,7 @@
 @media screen and (max-width: 375px) {
   /* Further reduce lamp size for very small screens */
   .Hero-lamp{
-    border: #0099FF solid 2px;
-    height: 20rem;
-   /* margin-top: 10rem; */
-   /* visibility: hidden; */
+   margin-top: -28rem;
   }
 
   .Animate-lamp-light{
@@ -691,11 +717,11 @@
 
   .Animate-lamp-beam{
     width: 35rem !important; /* Adjusted width for small screens */
-    height: 1.5rem !important; /* Adjusted height for small screens */
+    height: 1.5rem !important;
   }
 
   .Animate-Hero-Lamp{
-  margin-top: 10rem;
+  margin-top: -30rem;
   scale: 0.6;
   width: 100% !important;
   }
@@ -741,7 +767,7 @@
  .lamp-Light {
   height: 40rem;
   width: 65rem;
-  opacity: 20%;
+  opacity: 25%;
  }
 
  .lamp-Beam{
@@ -751,17 +777,12 @@
   width: 40rem;
  }
 
- .Animate-Mid-Lamp{
-  margin-top: -85rem;
- }
-
  .Image-Box{
   margin-top: -28rem;
   margin-bottom: 1rem;
  }
 
  .BG-Gradient{
-  /* scale: 0.8; */
   background:
   /* right */
   radial-gradient(circle at 68.5714340209961% 32.38101323445638%, #000000 0%, 1.7%, rgba(0, 0, 0, 0) 40%),
@@ -787,12 +808,12 @@
  }
 
  .About-container{
-  width: 90% !important;
+  width: 105% !important;
   scale: 100%;
  }
 
  .About-lamp{
-  margin-top: 1rem;
+  margin-top: 1.5rem;
  }
 
  .About-lamp-beam{
@@ -845,10 +866,6 @@
   opacity: 0;
  }
 
- .mobile-globe-container .Globe-Text-top,
-  .mobile-globe-container .Globe-Text-bottom {
-    font-size: 2rem !important;
-  }
 
  .project-animated-component{
   /* transform: translateX(-10rem) !important; */
@@ -856,6 +873,11 @@
   width: 100% !important;
   height: 100% !important;
  }
+
+ .project-heading-text{
+  width: 95% !important;
+ }
+
 
  /* Improve fixed lamp positioning */
  .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
