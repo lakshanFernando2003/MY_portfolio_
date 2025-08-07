@@ -303,7 +303,7 @@
 @media screen and (max-width: 480px) {
   /* Further reduce lamp size for very small screens */
   .Hero-lamp{
-   margin-top: -40rem;
+   margin-top: -35rem;
   }
 
   .Animate-lamp-light{
@@ -316,19 +316,19 @@
   }
 
   .Animate-Hero-Lamp{
-  margin-top: -40rem;
+  margin-top: -45rem;
   scale: 0.6;
   width: 10% !important;
   }
 
  .Hero-text{
-  margin-top: -6rem;
-  transform: translateY(-2rem);
+  margin-top: -5rem;
+  transform: translateY(3rem);
 
  }
 
  .Hero-text-container{
-  transform: translateY(-3rem);
+  transform: translateY(3rem);
   }
 
  .Hero-text-main{
@@ -336,7 +336,7 @@
  }
 
  .Scroll-Down-Container{
-  margin-top: 5rem !important;
+  margin-top: 20rem !important;
  }
 
   .scroll-down {
@@ -352,7 +352,7 @@
   }
 
  .lamp-container{
-  margin-top: -15rem;
+  margin-top: -10rem;
   transform: translateX(-2rem);
 
  }
@@ -364,8 +364,8 @@
 
  .lamp-Light {
   transform: translateY(-5rem);
-  height: 20rem;
-  width: 45rem;
+  height: 50rem;
+  width: 65rem;
   opacity: 27%;
  }
 
@@ -381,7 +381,7 @@
  }
 
  .Image-Box{
-  margin-top: -22rem;
+  margin-top: -35rem;
   margin-bottom: 4rem;
  }
 
@@ -416,7 +416,7 @@
  }
 
  .About-lamp{
-  margin-top: 1.2rem;
+  margin-top: 5.8rem;
  }
 
  .About-lamp-beam{
@@ -424,11 +424,11 @@
  }
 
  .Bento-Grids-Header{
-  margin-top: -5rem;
+  margin-top: -4rem;
  }
 
  .Bento-Grids-Header{
-    margin-top: 0;
+    /* margin-top: 0; */
     padding: 0 0.5rem;
   }
 
