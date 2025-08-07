@@ -236,34 +236,66 @@
   scale: 100%;
  }
 
- .project-animated-component{
-  /* transform: translateX(-10rem) !important; */
-  scale: 0.6;
-  width: 100% !important;
-  height: 100% !important;
+ .About-lamp{
+  margin-top: 1.2rem;
  }
 
- /* Improve fixed lamp positioning */
- .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
-   left: 50% !important;
-   max-width: 92vw !important;
-   transform: translate(-50%, 0) scale(0.6) !important;
+ .About-lamp-beam{
+  height: 2.5rem !important;
  }
 
-  .Bento-Grids-Header{
-    margin-top: -2rem;
-    padding-bottom: 2rem;
+ .Bento-Grids-Header{
+  margin-top: -5rem;
+ }
+
+ .Bento-Grids-Header{
+    margin-top: 0;
+    padding: 0 0.5rem;
   }
 
-  .Bento-Grids {
-    padding-top: 1rem;
-    padding-bottom: 6rem;
+  .Bento-Grids .w-\[85vw\] {
+    width: 95vw !important;
+    padding: 0 0.25rem !important;
   }
 
-  .mobile-globe-container .Globe-Text-top,
+  .Bento-Grids h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .Bento-Grids h2 {
+    font-size: 0.8rem !important;
+  }
+
+  .Bento-Grids h3 {
+    font-size: 0.9rem !important;
+    line-height: 1.3;
+  }
+
+  /* Ensure cards have proper margins and padding */
+  .BentoCard {
+    margin: 0 !important;
+    padding: 0.5rem !important;
+  }
+
+ .About-Pic-container{
+  margin-top: 5rem !important;
+ }
+
+ .About-m-pic{
+  margin-left: 2rem;
+ }
+
+ .stat-card{
+  margin-top: 2rem !important;
+ }
+
+ .pic-dec{
+  opacity: 0;
+ }
+
+ .mobile-globe-container .Globe-Text-top,
   .mobile-globe-container .Globe-Text-bottom {
-    font-size: 2.5rem;
-    padding: 0.5rem;
+    font-size: 2rem !important;
   }
 }
 
@@ -383,39 +415,66 @@
   scale: 100%;
  }
 
- .project-animated-component{
-  /* transform: translateX(-10rem) !important; */
-  scale: 0.6;
-  width: 100% !important;
-  height: 100% !important;
+ .About-lamp{
+  margin-top: 1.2rem;
  }
 
- /* Improve fixed lamp positioning */
- .fixed.z-50.rounded-\[90\%\].blur-\[48px\] {
-   left: 50% !important;
-   max-width: 92vw !important;
-   transform: translate(-50%, 0) scale(0.6) !important;
+ .About-lamp-beam{
+  height: 2.5rem !important;
  }
 
-  .Bento-Grids-Header{
-    margin-top: -1rem;
-    padding-bottom: 1rem;
+ .Bento-Grids-Header{
+  margin-top: -5rem;
+ }
+
+ .Bento-Grids-Header{
+    margin-top: 0;
+    padding: 0 0.5rem;
   }
 
-  .Bento-Grids {
-    padding-top: 0.5rem;
-    padding-bottom: 3rem;
+  .Bento-Grids .w-\[85vw\] {
+    width: 95vw !important;
+    padding: 0 0.25rem !important;
   }
 
-  .mobile-globe-container .Globe-Text-top {
-    font-size: 1.2rem !important;
-    padding: 0.25rem !important;
+  .Bento-Grids h1 {
+    font-size: 1.5rem !important;
   }
 
+  .Bento-Grids h2 {
+    font-size: 0.8rem !important;
+  }
+
+  .Bento-Grids h3 {
+    font-size: 0.9rem !important;
+    line-height: 1.3;
+  }
+
+  /* Ensure cards have proper margins and padding */
+  .BentoCard {
+    margin: 0 !important;
+    padding: 0.5rem !important;
+  }
+
+ .About-Pic-container{
+  margin-top: 9rem !important;
+ }
+
+ .About-m-pic{
+  margin-left: 2rem;
+ }
+
+ .stat-card{
+  margin-top: 2rem !important;
+ }
+
+ .pic-dec{
+  opacity: 0;
+ }
+
+ .mobile-globe-container .Globe-Text-top,
   .mobile-globe-container .Globe-Text-bottom {
-    font-size: 1.1rem !important;
-    padding: 0.25rem !important;
-    bottom: 0 !important;
+    font-size: 2rem !important;
   }
 }
 
@@ -602,9 +661,10 @@
 @media screen and (max-width: 375px) {
   /* Further reduce lamp size for very small screens */
   .Hero-lamp{
-   margin-top: -28rem;
-   opacity: 0;
-   visibility: hidden;
+    border: #0099FF solid 2px;
+    height: 20rem;
+   /* margin-top: 10rem; */
+   /* visibility: hidden; */
   }
 
   .Animate-lamp-light{
@@ -617,9 +677,9 @@
   }
 
   .Animate-Hero-Lamp{
-  margin-top: -33rem;
+  margin-top: 10rem;
   scale: 0.6;
-  width: 10% !important;
+  width: 100% !important;
   }
 
  .Hero-text{
@@ -674,7 +734,7 @@
  }
 
  .Animate-Mid-Lamp{
-  opacity: 0;
+  margin-top: -85rem;
  }
 
  .Image-Box{
