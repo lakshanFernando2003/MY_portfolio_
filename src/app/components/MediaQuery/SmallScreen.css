@@ -457,12 +457,12 @@
   }
 
  .About-Pic-container{
-  margin-top: 5rem !important;
-  transform: translateY(3rem);
+  overflow: visible;
  }
 
  .About-m-pic{
   margin-left: 2rem;
+  transform: translateY(5rem);
  }
 
  .stat-card{
@@ -657,11 +657,12 @@
   }
 
  .About-Pic-container{
-  margin-top: 5rem !important;
+
  }
 
  .About-m-pic{
   margin-left: 2rem;
+  transform: translateY(3rem);
  }
 
  .stat-card{
@@ -837,11 +838,12 @@
   }
 
  .About-Pic-container{
-  margin-top: 5rem !important;
+
  }
 
  .About-m-pic{
   margin-left: 1rem;
+  transform: translateY(2rem);
  }
 
  .stat-card{
