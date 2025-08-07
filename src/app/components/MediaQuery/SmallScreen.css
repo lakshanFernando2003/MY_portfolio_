@@ -459,8 +459,9 @@
  .About-m-pic{
   overflow: visible;
   margin-left: 2rem;
-  transform: translateY(-5rem);
+  transform: translateY(-7rem);
   height: auto !important;
+  opacity: 60%;
  }
 
  .stat-card{
