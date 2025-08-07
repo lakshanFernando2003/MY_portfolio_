@@ -323,12 +323,12 @@
 
  .Hero-text{
   margin-top: -5rem;
-  transform: translateY(3rem);
+  transform: translateY(-1rem);
 
  }
 
  .Hero-text-container{
-  transform: translateY(3rem);
+  transform: translateY(-2rem);
   }
 
  .Hero-text-main{
@@ -336,7 +336,7 @@
  }
 
  .Scroll-Down-Container{
-  margin-top: 20rem !important;
+  margin-top: 15rem !important;
  }
 
   .scroll-down {
@@ -424,7 +424,7 @@
  }
 
  .Bento-Grids-Header{
-  margin-top: -4rem;
+  margin-top: -5rem;
  }
 
  .Bento-Grids-Header{
@@ -457,7 +457,8 @@
   }
 
  .About-Pic-container{
-  margin-top: 9rem !important;
+  margin-top: 5rem !important;
+  transform: translateY(3rem);
  }
 
  .About-m-pic{
@@ -476,6 +477,27 @@
   .mobile-globe-container .Globe-Text-bottom {
     font-size: 2rem !important;
   }
+
+  .Globe-container{
+    width: 100% !important;
+    height: 500px !important;
+    margin-top: 10rem;
+  }
+  .Globe{
+    width: 100% !important;
+  }
+
+  .tech-row-1{
+    margin-bottom: 3rem;
+  }
+
+  .tech-icons{
+    scale: 130%;
+  }
+  .tech-code{
+    opacity: 0;
+  }
+
 }
 
 /* Extra Small Devices (under 395px) */

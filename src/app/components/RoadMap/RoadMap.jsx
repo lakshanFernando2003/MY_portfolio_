@@ -129,7 +129,7 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
     // Initial setup for cards and logos
     gsap.set(".roadmap-card", {
       opacity: 0,
-      x: 100
+      x: 150
     });
 
     gsap.set(".timeline-logo", {
@@ -171,7 +171,7 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
         onEnter: () => {
           // Animate roadmap card from right (like desktop right element)
           gsap.fromTo(roadmapCard,
-            { x: -100, opacity: 0 },
+            { x: 150, opacity: 0 },
             { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }
           );
 

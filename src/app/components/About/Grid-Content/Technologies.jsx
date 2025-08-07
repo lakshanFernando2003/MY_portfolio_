@@ -101,7 +101,7 @@ export default function Technologies() {
       key={`${icon.name}-${index}`}
       className="flex-shrink-0 mx-8 flex flex-col items-center justify-center group"
     >
-      <div className="relative w-16 h-10 md:w-20 md:h-16 transition-transform duration-300 scale-120 group-hover:scale-135">
+      <div className="tech-icons relative w-16 h-10 md:w-20 md:h-16 transition-transform duration-300 scale-120 group-hover:scale-135 ">
         <Image
           src={icon.src}
           alt={icon.alt}
@@ -225,7 +225,7 @@ export default function Technologies() {
         </h3>
         {/* First Marquee - Left to Right */}
         <div
-          className="relative overflow-hidden mt-5 mb-3"
+          className="tech-row-1 relative overflow-hidden mt-5 mb-3"
           onMouseEnter={() => handleMarqueeHover(true)}
           onMouseLeave={() => handleMarqueeHover(false)}
         >
@@ -262,8 +262,8 @@ export default function Technologies() {
           ref={headingRef}
           className="relative flex flex-col justify-center bg-transparent mt-15"
         >
-          <div className='flex flex-row absolute -mt-15'>
-            <span className='absolute left-50 text-9xl blur-sm'> {`{ `}</span>
+          <div className='tech-code flex flex-row absolute -mt-15 '>
+            <span className='absolute left-50 text-9xl blur-sm '>{`{ `}</span>
             <span className='absolute -right-190 text-9xl blur-sm'>{`} `}</span>
           </div>
           <p className="blur-[1px] text-gray-400 font-semibold font-sans tracking-wider text-lg text-center">
