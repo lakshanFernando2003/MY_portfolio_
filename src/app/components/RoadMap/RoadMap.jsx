@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import './RoadMap.css';
 import AnimateLamp from '../Section Lamps/AnimateLamp';
+import "../MediaQuery/largeScreen.css"
+import "../MediaQuery/SmallScreen.css"
+import './RoadMap.css';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -191,12 +193,12 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
   }, []);
 
   return (
-    <section id="roadmap" ref={sectionRef} className="flex-center mt-20 section-padding px-4">
-      <div className="w-full h-[30vh] overflow-hidden -mt-40">
+    <section id="roadmap" ref={sectionRef} className="flex-center mt-20 ">
+      <div className="roadmap-container w-full h-[30vh] overflow-hidden -mt-40 ">
         {/* Section lamp Header */}
         <AnimateLamp
           className="m-1"
-          lightClassName='Animate-lamp-light'
+          lightClassName='Animate-lamp-light '
           beamClassName='Animate-lamp-beam'
           lightColor="#5DBB99"
           lightGradient="radial-gradient(circle,rgba(93, 187, 153, 1) 0%, rgba(93, 187, 153, 0.17) 100%)"
@@ -208,8 +210,8 @@ const MobileRoadMap = ({ roadmapData, sectionEndRef, sectionRef }) => {
         />
       </div>
 
-      <div className="w-full h-full -mt-35">
-        <div className="mb-10 text-center mx-auto max-w-3xl">
+      <div className="w-full h-full -mt-35 section-padding">
+        <div className="roadmap-heading mb-10 text-center mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold mb-2">My Development Journey</h2>
           <p className="text-white-50">🗺️ Career Roadmap and Milestones</p>
         </div>
@@ -407,7 +409,7 @@ export default function RoadMap() {
       </div>
 
       <div className="w-full h-full md:px-20 px-5 -mt-35">
-        <div className="mb-10 text-center mx-auto max-w-3xl">
+        <div className="roadmap-heading mb-10 text-center mx-auto max-w-3xl">
           <h2 className="text-4xl font-bold mb-2">My Development Journey</h2>
           <p className="text-white-50">🗺️ Career Roadmap and Milestones</p>
         </div>

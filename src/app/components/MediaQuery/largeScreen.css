@@ -1,12 +1,14 @@
 
 @media screen and (min-width: 1021px) and (max-width: 1200px) {
   /* Styles for screens between 1021px and 1200px */
-    .Nav-Panel{
+  .Nav-Panel{
+
   }
 
   .navbar-gap{
     gap: 30px;
   }
+
 
   .Hero-lamp{
    margin-top: -27rem;
@@ -22,19 +24,11 @@
 
  .Hero-text-container{
   transform: translateY(-5rem);
-  scale: 70%;
+  scale: 90%;
  }
 
  .Hero-text-main{
-  font-size: 9.5rem;
- }
-
-.reactive-Orb-container{
-  margin-top: -38rem;
-  }
-
- .reactive-Orb-inner{
-  scale: 70%;
+  font-size: 11rem;
  }
 
  .Scroll-Down-Container{
@@ -123,6 +117,26 @@
  .Globe-Text-bottom{
   font-size: 2.3rem;
  }
+
+ .stat-card{
+  transform: scaleY(0.75);
+ }
+
+ .stat-container{
+ margin-top: -8rem;
+ }
+
+ .tech-row-1{
+   margin-top: -0.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-icons{
+    scale: 90%;
+  }
+
+  /* project section resize */
+
 }
 
 @media screen and (min-width: 1201px) and (max-width: 1440px) {
@@ -244,6 +258,16 @@
   font-size: 2.3rem;
  }
 
+ .stat-card{
+  transform: scaleY(0.75);
+ }
+
+ .stat-container{
+ margin-top: -7.5rem;
+ }
+
+ /* project section resize */
+
 }
 
 @media screen and (min-width: 1441px) and (max-width: 1900px) {
@@ -363,6 +387,24 @@
   font-size: 2.3rem;
  }
 
+ .pic-dec{
+  transform: translateX(-1.5rem);
+ }
+
+ .stat-card{
+  transform: scaleY(0.75);
+ }
+
+ .stat-container{
+ margin-top: -7rem;
+ }
+
+ .roadmap-heading{
+  margin-top: 2rem ;
+ }
+
+ /* project section resize */
+
 }
 
 @media screen and (min-width: 1900px) and (max-width: 2560px) {
@@ -477,6 +519,10 @@
   transform: translateY(25rem);
  }
 
+ .stat-container{
+ margin-top: -4rem;
+ }
+
 .Globe-container{
   top: 8rem;
   height: 700px;
@@ -527,7 +573,7 @@
     scale: 110%;
   }
 
-
+  /* project section current styles skip */
 
 }
 

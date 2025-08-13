@@ -238,7 +238,7 @@ export const AboutBentoGrids = () => {
                 </div>
 
                 {/* Content that would go on top of the background image */}
-                <div className="relative z-20 text-white p-4 w-full h-full flex flex-col justify-end sm:justify-center">
+                <div className="relative z-20 text-white p-4 w-full h-full flex flex-col justify-end-safe md:justify-end sm:justify-center">
                   <p className="pic-dec text-sm opacity-50 font-semibold -ml-5">Software Developer & Designer</p>
                 </div>
               </div>
@@ -246,19 +246,19 @@ export const AboutBentoGrids = () => {
           </div>
 
           {/* Stats section */}
-          <BentoTilt className="stat-card border-gray-500 border-0 bento-tilt_3 col-span-1 row-span-1 sm:col-span-1 md:col-span-2 md:ms-0 overflow-visible h-[300px] sm:h-auto ">
+          <div className="stat-card border-gray-500 border-0 bento-tilt_3 col-span-1 row-span-1 sm:col-span-1 md:col-span-2 md:ms-0 overflow-visible h-[300px] sm:h-auto ">
             <motion.div
-              className="-mt-15"
+              className="stat-container "
               variants={itemFromLeft}
               style={{
                 y: useTransform(scrollYProgress, [0, 1], [0, -25])
               }}
             >
-              <BentoCard>
+              <BentoCard className="">
                 <MyStats/>
               </BentoCard>
             </motion.div>
-          </BentoTilt>
+          </div>
 
           {/* Globe section */}
           <BentoTilt

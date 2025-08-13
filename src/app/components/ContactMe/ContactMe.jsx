@@ -32,7 +32,7 @@ export default function ContactMe() {
         </h2>
 
         <div className='flex justify-center items-center'>
-          <div className='border-t-1 max-w-8xl border-neutral-700/60 rounded-t-4xl bg-transparent backdrop-blur-md shadow-lg'>
+          <div className='contact-container border-t-1 max-w-8xl border-neutral-700/60 rounded-t-4xl bg-transparent backdrop-blur-md shadow-lg'>
             <div className="max-w-7xl mx-auto px-2 sm:px-4 pb-3 sm:pb-5 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mt-2 sm:mt-4">
             {/* First Grid Box - Contact Form with animated gradient */}
             <motion.div

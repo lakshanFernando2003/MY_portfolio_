@@ -156,6 +156,17 @@ export default function ProjectSection() {
   const projectComponentRef = useRef(null);
   const horizontalRef = useRef(null);
   const projectsRef = useRef(null);
+  const [deviceWidth, setDeviceWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  // Update device width on resize for responsive adjustments
+  useEffect(() => {
+    const handleResize = () => {
+      setDeviceWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useLayoutEffect(() => {
     // Animation for container expansion
@@ -189,21 +200,30 @@ export default function ProjectSection() {
         ease: "none",
       }, 0.5); // Start halfway through the animation
 
+    // Determine device type for responsive behavior
+    const isMobile = deviceWidth < 768;
+    const isTablet = deviceWidth >= 768 && deviceWidth < 1024;
+
+    // Calculate scroll distance based on device size
+    const totalContentWidth = projectsRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const scrollDistance = Math.max(0, totalContentWidth - viewportWidth);
+
     // Horizontal scrolling animation for projects section
     const horizontalAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: horizontalRef.current,
         start: "top top",
-        end: () => `+=${horizontalRef.current.offsetWidth}`,
+        end: isMobile ? `+=${scrollDistance * 0.9}` : `+=${scrollDistance}`,
         scrub: 1.5,
         pin: true,
         anticipatePin: 1,
-        markers: false, // Disable markers for production
+        markers: false,
       }
     });
 
     horizontalAnimation.to(projectsRef.current, {
-      x: () => -(projectsRef.current.offsetWidth - window.innerWidth),
+      x: -scrollDistance,
       ease: "none",
     });
 
@@ -234,7 +254,7 @@ export default function ProjectSection() {
       // Clean up ScrollTrigger when component unmounts
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [deviceWidth]); // Re-run when device width changes
 
   // Helper function to get GitHub icon or coming soon badge
   const getSourceElement = (project) => {
@@ -383,31 +403,54 @@ export default function ProjectSection() {
 
           {/* Horizontal scrolling projects section */}
           <div className="border-0 project-card-container relative w-full bg-transparent backdrop-blur-sm overflow-hidden  p-1 z-10">
-            <div ref={projectsRef} className="flex items-center justify-start gap-12 py-6" style={{ width: `${projects.length * 100 + 60}vw ` }}>
+            <div
+              ref={projectsRef}
+              className="flex items-center justify-start gap-4 sm:gap-8 md:gap-12 py-3 sm:py-6"
+              style={{
+                width: deviceWidth < 768 ? `${projects.length * 85 + 20}vw` : deviceWidth < 1024 ? `${projects.length * 90 + 20}vw` : `${projects.length * 100 + 60}vw`,
+                paddingLeft: deviceWidth < 768 ? '1rem' : '2rem'
+              }}
+            >
               {projects.map((project, index) => (
-                <div key={project.id} className=" border-0 project-card min-h-[600px] flex flex-col md:flex-row items-center justify-center gap-8 px-8 mx-auto">
-                  <div className="project-vidbox w-[600px] h-[380px] relative overflow-hidden rounded-2xl group flex-shrink-0">
-                    <div className="w-full h-full bg-neutral-800 shadow-lg shadow-blue-500/10 rounded-2xl overflow-hidden">
+                <div
+                  key={project.id}
+                  className="border-0 project-card min-h-[400px] sm:min-h-[500px] md:min-h-[600px]
+                             flex flex-col items-center justify-center
+                             gap-4 sm:gap-6 md:gap-8
+                             px-2 sm:px-4 md:px-8 mx-auto"
+                  style={{ width: deviceWidth < 768 ? '85vw' : deviceWidth < 1024 ? '80vw' : '70vw' }}
+                >
+                  <div className="project-vidbox
+                                  w-full sm:w-[400px] md:w-[600px]
+                                  h-[200px] sm:h-[280px] md:h-[380px]
+                                  relative overflow-hidden rounded-xl sm:rounded-2xl
+                                  group flex-shrink-0">
+                    <div className="w-full h-full bg-neutral-800 shadow-lg shadow-blue-500/10 rounded-xl sm:rounded-2xl overflow-hidden">
                       <div className="relative w-full h-full">
                         <Image
                           src={project.image}
                           alt={project.title}
                           fill
-                          className="object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 600px"
+                          className="object-cover rounded-xl sm:rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 85vw, (max-width: 1024px) 400px, 600px"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-70"></div>
 
                         {/* Coming Soon Badge */}
                         {project.comingSoon && (
-                          <div className="absolute top-4 right-4 bg-amber-500/80 text-black font-semibold px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                          <div className="absolute top-2 sm:top-4 right-2 sm:right-4
+                                         bg-amber-500/80 text-black font-semibold
+                                         px-2 sm:px-3 py-0.5 sm:py-1
+                                         rounded-full text-xs sm:text-sm backdrop-blur-sm">
                             Coming Soon
                           </div>
                         )}
 
-                        <div className="hover-sign absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <div className="w-16 h-16 bg-blue-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <div className="hover-sign absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10
+                                        opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="w-10 h-10 sm:w-16 sm:h-16
+                                         bg-blue-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <svg className="w-5 h-5 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l5-5m0 0l-5-5m5 5H4" />
                             </svg>
                           </div>
@@ -416,8 +459,8 @@ export default function ProjectSection() {
                     </div>
                   </div>
 
-                  <div className="project-info w-full md:w-2/5 p-6">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                  <div className="project-info w-full p-2 sm:p-4 md:p-6">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-4 md:mb-6">
                       {project.title.split(project.highlight).map((part, i, arr) =>
                         i === 0 ? (
                           <span key={i}>{part}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{project.highlight}</span></span>
@@ -426,22 +469,26 @@ export default function ProjectSection() {
                         )
                       )}
                     </h2>
-                    <p className="text-xl text-gray-300 mb-10 leading-relaxed">{project.description}</p>
+                    <p className="text-sm sm:text-base md:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-10 leading-relaxed">
+                      {project.description}
+                    </p>
                     <a
                       href="#"
-                      className={`flex items-center gap-2 w-fit px-8 py-4 rounded-lg ${
-                        project.comingSoon
-                          ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20'
-                          : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20'
-                      } transition-all duration-300 group`}
+                      className={`flex items-center gap-2 w-fit
+                                 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg
+                                 ${
+                                   project.comingSoon
+                                     ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20'
+                                     : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20'
+                                 } transition-all duration-300 group`}
                     >
-                      <span className="text-lg">{project.comingSoon ? 'Coming Soon' : 'View Project'}</span>
+                      <span className="text-sm sm:text-base md:text-lg">{project.comingSoon ? 'Coming Soon' : 'View Project'}</span>
                       {project.comingSoon ? (
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       ) : (
-                        <FaExternalLinkAlt className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
+                        <FaExternalLinkAlt className="text-xs sm:text-sm transition-transform duration-300 group-hover:translate-x-1" />
                       )}
                     </a>
                   </div>

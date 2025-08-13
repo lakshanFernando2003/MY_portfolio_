@@ -284,17 +284,17 @@ export default function NavBar() {
             variants={mobileMenuVariants}
           >
             <div className="flex flex-col items-center justify-center h-full">
-              <motion.div className="flex flex-col items-center gap-8 w-full">
+              <motion.div className="flex flex-col items-center gap-8 w-full mobile-nav-items">
                 {navItems.map((item, idx) => (
                   <motion.div
                     key={item.id}
                     variants={mobileItemVariants}
-                    className="text-center"
+                    className="text-center border-1 mt-4 border-l-0 border-r-0 border-t-0 w-full border-white/20 h-8"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <span
-                      className="text-white text-2xl font-bold cursor-pointer"
+                      className="text-white text-6xl font-bold font-anton cursor-pointer"
                       onClick={() => scrollToSection(item.id)}
                     >
                       {item.label}
@@ -305,7 +305,7 @@ export default function NavBar() {
                   variants={mobileItemVariants}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-4"
+                  className="mt-7"
                 >
                   <a
                     className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold cursor-pointer"
@@ -317,7 +317,7 @@ export default function NavBar() {
 
                 {/* Social links in mobile menu */}
                 <motion.div
-                  className="flex gap-6 mt-10"
+                  className="flex gap-6 mt-10 mobile-nav-links"
                   variants={mobileItemVariants}
                 >
                   <a

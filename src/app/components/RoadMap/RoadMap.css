@@ -46,14 +46,14 @@
 .section-padding {
   padding-left: 1.25rem; /* px-5 */
   padding-right: 1.25rem; /* px-5 */
-  margin-top: 5rem; /* mt-20 */
+  margin-top: 5rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-left: 2.5rem; /* md:px-10 */
-    padding-right: 2.5rem; /* md:px-10 */
-    margin-top: 10rem; /* md:mt-40 */
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-top: 10rem;
   }
 }
 
@@ -144,7 +144,3 @@
   filter: blur(10px);
   filter: saturate(200);
 }
-
-/* .card:hover::before {
-  opacity: 1;
-} */

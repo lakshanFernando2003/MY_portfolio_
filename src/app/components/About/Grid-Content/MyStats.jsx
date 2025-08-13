@@ -27,14 +27,14 @@ export default function MyStats() {
     {
       label: "Age",
       value: "22",
-      colSpan: "col-span-1 sm:col-span-2 md:col-span-1",
+      colSpan: "col-span-1 sm:col-span-2 md:col-span-2",
       rowSpan: "row-span-1",
       bgColor: "from-blue-500/20 to-cyan-400/20"
     },
     {
       label: "Country",
       value: "Sri Lanka",
-      colSpan: "col-span-1 sm:col-span-2 md:col-span-2",
+      colSpan: "col-span-1 sm:col-span-2 md:col-span-3",
       rowSpan: "row-span-1",
       bgColor: "from-purple-500/20 to-pink-400/20"
     },
@@ -48,21 +48,21 @@ export default function MyStats() {
     {
       label: "University",
       value: "Informatics Institute of Technology (IIT)",
-      colSpan: "col-span-2 sm:col-span-3 md:col-span-2",
+      colSpan: "col-span-2 sm:col-span-3 md:col-span-3",
       rowSpan: "row-span-1",
       bgColor: "from-amber-500/20 to-orange-400/20"
     },
     {
       label: "Residence",
       value: "Mount-Lavinia",
-      colSpan: "col-span-2 sm:col-span-1 md:col-span-1",
+      colSpan: "col-span-2 sm:col-span-1 md:col-span-2",
       rowSpan: "row-span-1",
       bgColor: "from-emerald-500/20 to-teal-400/20"
     },
     {
       label: "Current Status",
       value: "Searching for Internships",
-      colSpan: "col-span-2 sm:col-span-4 md:col-span-6",
+      colSpan: "col-span-2 sm:col-span-4 md:col-span-8",
       rowSpan: "row-span-1",
       bgColor: "from-rose-500/20 to-red-400/20"
     }
@@ -114,7 +114,7 @@ export default function MyStats() {
         {/* Scrollable content area */}
         <div className="flex-grow overflow-y-auto pr-1 sm:pr-2">
           {/* Grid with responsive columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 auto-rows-min gap-2 sm:gap-3 pb-2 sm:pb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 auto-rows-min gap-2 sm:gap-3 pb-2 sm:pb-4">
             {personalStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
