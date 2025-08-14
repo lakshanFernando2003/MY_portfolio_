@@ -48,7 +48,7 @@ export default function Collabaration() {
     <motion.div
       initial={{ opacity: 0.9 }}
       whileHover={{ opacity: 1 }}
-      className="h-full flex flex-col gap-4 backdrop-blur-lg bg-gradient-to-br from-white/8 to-white/3 rounded-xl border border-white/10 shadow-xl transition-all duration-300 overflow-hidden"
+      className="h-full flex flex-col gap-4 backdrop-blur-lg bg-gradient-to-br from-white/8 to-white/3 rounded-xl border border-white/10 shadow-xl transition-all duration-300 overflow-hidden "
     >
       {/* Animated background elements */}
       <motion.div
@@ -63,7 +63,7 @@ export default function Collabaration() {
 
       <div className="relative z-10 p-6 flex flex-col h-full">
         {/* Header with animated underline */}
-        <div className="mb-3">
+        <div className="collab-heading mb-3">
           <motion.h3
             className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300"
             initial={{ y: -20 }}
@@ -81,7 +81,7 @@ export default function Collabaration() {
         </div>
 
         <motion.p
-          className="text-sm text-gray-300/90 leading-relaxed"
+          className="collab-text text-sm text-gray-300/90 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -92,7 +92,7 @@ export default function Collabaration() {
 
         {/* Team section with improved styling */}
         <motion.div
-          className="mt-auto pt-5"
+          className="mt-auto pt-5 collab-team"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}

@@ -9,7 +9,7 @@ export default function Footer() {
     <div>
       <div className='bg-transparent text-white mt-20'>
           <div className='w-full border-t-1 border-b-1 border-neutral-700/60 mx-auto px-4 flex flex-col md:flex-row gap-8 py-8'>
-          <div className='w-full md:w-4/8'>
+          <div className='w-full md:w-4/8 flex justify-center sm:mb-5 '>
             {/* TextPressure component */}
             <div style={{ height: '60px' }}> {/* Set a fixed height */}
               <TextPressure
@@ -23,16 +23,15 @@ export default function Footer() {
                 textColor="#ffffff"
                 strokeColor="#3B82F6"
                 fixedFontSize={85}    // Use fixed size instead of minFontSize
-                     // Reduce size factor for smaller text
               />
             </div>
           </div>
 
-          <div className='w-full md:w-3/8 flex flex-col md:flex-row gap-0'>
+          <div className='w-full md:w-3/8 flex flex-col md:flex-row gap-4 md:gap-0'>
             {/* Navigation Section */}
-            <div className='flex-1'>
-              <h3 className='text-sm font-semibold mb-2'>Navigation</h3>
-              <ul className='space-y-1.5 text-sm'>
+            <div className='flex-1 text-center md:text-left'>
+              <h3 className='text-lg font-semibold mb-3'>Navigation</h3>
+              <ul className='space-y-2 text-sm'>
                 <li><Link href="#home" className='text-gray-400 hover:text-white transition-colors'>Home</Link></li>
                 <li><Link href="#about" className='text-gray-400 hover:text-white transition-colors'>About</Link></li>
                 <li><Link href="#projects" className='text-gray-400 hover:text-white transition-colors'>Projects</Link></li>
@@ -42,8 +41,8 @@ export default function Footer() {
             </div>
 
             {/* Achievements Section - Empty but allocated */}
-            <div className='flex-1'>
-              <h3 className='text-sm font-semibold mb-2'>Achievements</h3>
+            <div className='flex-1 text-center md:text-left'>
+              <h3 className='text-lg font-semibold mb-3'>Achievements</h3>
               <div className='text-gray-400 text-sm'>
                 {/* Empty but allocated space */}
                 <p>Coming soon</p>
@@ -51,33 +50,33 @@ export default function Footer() {
             </div>
 
             {/* Contact Information */}
-            <div className='flex-1'>
-              <h3 className='text-sm font-semibold mb-2'>Contact</h3>
-              <div className='space-y-1 text-sm'>
-                <p className='text-gray-400 flex items-center gap-2'>
+            <div className='flex-1 text-center md:text-left'>
+              <h3 className='text-lg font-semibold mb-3'>Contact</h3>
+              <div className='space-y-2 text-sm'>
+                <p className='text-gray-400 flex items-center gap-2 justify-center md:justify-start'>
                   <FaEnvelope size={14} />
                   <a href="mailto:lakshanchanaka34@gmail.com" className=''>lakshanchanaka34@gmail.com</a>
                 </p>
-                <p className='text-gray-400 flex items-center gap-2'>
+                <p className='text-gray-400 flex items-center gap-2 justify-center md:justify-start'>
                   <FaGlobe size={14} />
                   <a href="https://lakshan.work" className=''>lakshan.work</a>
                 </p>
               </div>
 
               {/* Social Media Links */}
-              <div className='mt-20'>
-                <div className='flex flex-row gap-3'>
+              <div className='mt-6 md:mt-20'>
+                <div className='flex flex-row gap-4 justify-center md:justify-start'>
                   <a href="https://github.com/lakshanFernando2003" target="_blank" rel="noopener noreferrer"
                      className='text-gray-400 hover:text-white transition-colors'>
-                    <FaGithub size={16} />
+                    <FaGithub size={18} />
                   </a>
-                  <a href="www.linkedin.com/in/-lakshan-fernando" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.linkedin.com/in/-lakshan-fernando" target="_blank" rel="noopener noreferrer"
                      className='text-gray-400 hover:text-white transition-colors'>
-                    <FaLinkedin size={16} />
+                    <FaLinkedin size={18} />
                   </a>
                   <a href="https://www.instagram.com/_laksh__an_/" target="_blank" rel="noopener noreferrer"
                      className='text-gray-400 hover:text-white transition-colors'>
-                    <FaInstagram size={16} />
+                    <FaInstagram size={18} />
                   </a>
                 </div>
               </div>
@@ -109,8 +108,6 @@ export default function Footer() {
             <p className="text-center text-xs">© 2025 Lakshan. All rights reserved.</p>
           </div>
         </div>
-
-
       </div>
     </div>
   )

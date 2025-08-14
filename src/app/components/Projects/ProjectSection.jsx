@@ -397,7 +397,7 @@ export default function ProjectSection() {
                   randomMovement={true}       // Enable/disable random floating animation
                 />
 
-          <div className="relative mt-14 text-center">
+          <div className="project-recent-heading relative mt-14 text-center">
             <h2 className=" relative text-4xl uppercase tracking-wider font-semibold mb-3 font-mono z-20 translate-y-[2rem]">Recent Work</h2>
           </div>
 
@@ -420,7 +420,7 @@ export default function ProjectSection() {
                              px-2 sm:px-4 md:px-8 mx-auto"
                   style={{ width: deviceWidth < 768 ? '85vw' : deviceWidth < 1024 ? '80vw' : '70vw' }}
                 >
-                  <div className="project-vidbox
+                  <div className="project-vidbox border border-neutral-700/50 shadow-lg
                                   w-full sm:w-[400px] md:w-[600px]
                                   h-[200px] sm:h-[280px] md:h-[380px]
                                   relative overflow-hidden rounded-xl sm:rounded-2xl

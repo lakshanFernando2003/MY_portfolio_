@@ -395,7 +395,7 @@ const BubbleBackground = ({
   }
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div ref={containerRef} className="absolute inset-0 overflow-visible h-full pointer-events-none">
       {/* Optional: Show mouse area indicator */}
       {interactive && showMouseArea && mouseActive && (
         <motion.div

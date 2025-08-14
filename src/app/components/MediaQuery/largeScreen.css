@@ -105,10 +105,15 @@
  }
 
  .Globe-container{
-  top: 5rem;
-  height: 550px;
+  width: 100% !important;
+  height: 550px !important;
+   margin-top: 10rem;
 
  }
+
+  .Globe{
+    width: 100% !important;
+  }
 
   .Globe-Text-top{
   font-size: 2rem;
@@ -135,7 +140,69 @@
     scale: 90%;
   }
 
-  /* project section resize */
+  /* project section resize and design for mobile layout */
+
+  .project-recent-heading{
+    margin-top: 1rem;
+  }
+
+ .project-vidbox {
+    height: 400px !important;
+    width: 100% !important;
+    max-width: 50vw !important;
+  }
+
+  .project-info {
+    padding: 0.75rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .project-info h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-info p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-info a {
+    padding: 0.4rem 0.8rem !important;
+    margin-top: auto !important;
+  }
+
+  .project-info a span {
+    font-size: 0.8rem !important;
+  }
+
+  .project-card-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-card {
+    margin-top: 2rem;
+    scroll-snap-align: center;
+    width: 85vw !important;
+    min-height: 400px !important;
+    padding: 0.5rem !important;
+    flex-direction: row !important;
+  }
+
+  /* Center first project on mobile */
+  .project-card:first-child {
+    margin-left: calc((100vw - 85vw) / 2) !important;
+  }
 
 }
 
@@ -245,10 +312,15 @@
  }
 
  .Globe-container{
-  top: 5rem;
-  height: 550px;
+  width: 100% !important;
+  height: 550px !important;
+  margin-top: 10rem;
 
  }
+
+  .Globe{
+    width: 100% !important;
+  }
 
   .Globe-Text-top{
   font-size: 2rem;
@@ -266,7 +338,78 @@
  margin-top: -7.5rem;
  }
 
- /* project section resize */
+ .tech-row-1{
+   margin-top: -0.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-icons{
+    scale: 90%;
+  }
+
+ /* project section resize and design for mobile layout */
+
+  .project-recent-heading{
+    margin-top: 1rem;
+  }
+
+ .project-vidbox {
+    height: 400px !important;
+    width: 100% !important;
+    max-width: 50vw !important;
+  }
+
+  .project-info {
+    padding: 0.75rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .project-info h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-info p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-info a {
+    padding: 0.4rem 0.8rem !important;
+    margin-top: auto !important;
+  }
+
+  .project-info a span {
+    font-size: 0.8rem !important;
+  }
+
+  .project-card-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-card {
+    margin-top: 2rem;
+    scroll-snap-align: center;
+    width: 85vw !important;
+    min-height: 400px !important;
+    padding: 0.5rem !important;
+    flex-direction: row !important;
+  }
+
+  /* Center first project on mobile */
+  .project-card:first-child {
+    margin-left: calc((100vw - 85vw) / 2) !important;
+  }
 
 }
 
@@ -374,10 +517,15 @@
  }
 
  .Globe-container{
-  top: 5rem;
-  height: 550px;
+  width: 100% !important;
+  height: 550px !important;
+   margin-top: 10rem;
 
  }
+
+  .Globe{
+    width: 100% !important;
+  }
 
   .Globe-Text-top{
   font-size: 2rem;
@@ -399,11 +547,110 @@
  margin-top: -7rem;
  }
 
+ .collab-heading , .collab-text{
+  transform: translateY(-1rem);
+ }
+
+ .collab-team{
+  margin-top: -1rem;
+ }
+  .Collab-container{
+  /* margin-left: -2rem; */
+  scale: 100%;
+ }
+
+ .tech-marquee-container{
+  margin-top: 1rem;
+ }
+
+ .tech-row-1{
+   margin-top: -1rem;
+   margin-bottom: 1.5rem ;
+  }
+
+  .tech-icons{
+    scale: 90%;
+  }
+  .teach-bottom-text{
+   margin-top: 1rem;
+  }
+
+
+  .tech-code-left{
+    transform: translateX(5rem);
+  }
+
+  .tech-code-right{
+    transform: translateX(40rem);
+  }
+
  .roadmap-heading{
   margin-top: 2rem ;
  }
 
- /* project section resize */
+ /* project section resize and design for mobile layout */
+
+  .project-recent-heading{
+    margin-top: 1rem;
+  }
+
+ .project-vidbox {
+    height: 400px !important;
+    width: 100% !important;
+    max-width: 50vw !important;
+  }
+
+  .project-info {
+    padding: 0.75rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .project-info h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-info p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-info a {
+    padding: 0.4rem 0.8rem !important;
+    margin-top: auto !important;
+  }
+
+  .project-info a span {
+    font-size: 0.8rem !important;
+  }
+
+  .project-card-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-card {
+    margin-top: 2rem;
+    scroll-snap-align: center;
+    width: 85vw !important;
+    min-height: 400px !important;
+    padding: 0.5rem !important;
+    flex-direction: row !important;
+  }
+
+  /* Center first project on mobile */
+  .project-card:first-child {
+    margin-left: calc((100vw - 85vw) / 2) !important;
+  }
 
 }
 
@@ -551,8 +798,12 @@
   scale: 140%;
  }
 
-  .Beyond-Code-list{
-    margin-top: 1rem;
+  .tech-code-left{
+    transform: translateX(10rem);
+  }
+
+  .tech-code-right{
+    transform: translateX(45rem);
   }
 
   .creativity-Header{
@@ -573,7 +824,69 @@
     scale: 110%;
   }
 
-  /* project section current styles skip */
+  /* project section resize and design for mobile layout */
+
+  .project-recent-heading{
+    margin-top: 1rem;
+  }
+
+ .project-vidbox {
+    height: 400px !important;
+    width: 100% !important;
+    max-width: 50vw !important;
+  }
+
+  .project-info {
+    padding: 0.75rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .project-info h2 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-info p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-info a {
+    padding: 0.4rem 0.8rem !important;
+    margin-top: auto !important;
+  }
+
+  .project-info a span {
+    font-size: 0.8rem !important;
+  }
+
+  .project-card-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-card {
+    margin-top: 2rem;
+    scroll-snap-align: center;
+    width: 85vw !important;
+    min-height: 400px !important;
+    padding: 0.5rem !important;
+    flex-direction: row !important;
+  }
+
+  /* Center first project on mobile */
+  .project-card:first-child {
+    margin-left: calc((100vw - 85vw) / 2) !important;
+  }
 
 }
 

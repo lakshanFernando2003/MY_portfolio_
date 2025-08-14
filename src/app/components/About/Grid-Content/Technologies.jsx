@@ -218,14 +218,14 @@ export default function Technologies() {
       {/* Marquee Area */}
       <div
         ref={marqueeAreaRef}
-        className="absolute inset-0 flex flex-col justify-center z-10"
+        className="tech-marquee-container absolute inset-0 flex flex-col justify-center z-10"
       >
         <h3 className="text-3xl md:text-5xl font-sans tracking-wide font-bold bg mb-5 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
           Technologies
         </h3>
         {/* First Marquee - Left to Right */}
         <div
-          className="tech-row-1 relative overflow-hidden mt-5 mb-3"
+          className="tech-row-1 relative mt-5 mb-3"
           onMouseEnter={() => handleMarqueeHover(true)}
           onMouseLeave={() => handleMarqueeHover(false)}
         >
@@ -242,7 +242,7 @@ export default function Technologies() {
 
         {/* Second Marquee - Right to Left */}
         <div
-          className="relative overflow-hidden"
+          className="tech-row-1relative "
           onMouseEnter={() => handleMarqueeHover(true)}
           onMouseLeave={() => handleMarqueeHover(false)}
         >
@@ -260,11 +260,11 @@ export default function Technologies() {
         {/* Default Heading Content */}
         <div
           ref={headingRef}
-          className="relative flex flex-col justify-center bg-transparent mt-15"
+          className="teach-bottom-text relative flex flex-col justify-center bg-transparent mt-15"
         >
           <div className='tech-code flex flex-row absolute -mt-15 '>
-            <span className='absolute left-50 text-9xl blur-sm '>{`{ `}</span>
-            <span className='absolute -right-190 text-9xl blur-sm'>{`} `}</span>
+            <span className='tech-code-left absolute text-9xl blur-sm '>{`{ `}</span>
+            <span className='tech-code-right absolute text-9xl blur-sm'>{`} `}</span>
           </div>
           <p className="blur-[1px] text-gray-400 font-semibold font-sans tracking-wider text-lg text-center">
             Check out the technologies I work with
