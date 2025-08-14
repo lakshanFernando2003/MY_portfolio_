@@ -8,8 +8,6 @@ export default function About() {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   // OPTIMIZATION: Track if content should be visible at all
   const [contentVisible, setContentVisible] = useState(false);
-  // Track if screen height is greater than 911px
-  const [isTallScreen, setIsTallScreen] = useState(false);
 
   // OPTIMIZATION: Create refs for animation targets
   const aboutContainerRef = useRef(null);
@@ -18,23 +16,6 @@ export default function About() {
   const paragraphRef = useRef(null);
   const taglineRef = useRef(null);
   const ctaRef = useRef(null);
-
-  // Add effect to check screen height
-  useEffect(() => {
-    // Function to check and update screen height state
-    const checkScreenHeight = () => {
-      setIsTallScreen(window.innerHeight > 910);
-    };
-
-    // Check on initial render
-    checkScreenHeight();
-
-    // Add event listener for resize
-    window.addEventListener('resize', checkScreenHeight);
-
-    // Cleanup
-    return () => window.removeEventListener('resize', checkScreenHeight);
-  }, []);
 
   // OPTIMIZATION: Use Framer Motion's useInView to detect when section is visible
   const isInView = useInView(aboutContainerRef, {
@@ -97,9 +78,7 @@ export default function About() {
   }, [shouldAnimate]);
 
   return (
-    <div className={`About-card flex items-center justify-center w-full  overflow-hidden ${
-      isTallScreen ? 'transform -translate-y-[7rem] h-[88vh] ' : 'h-[100vh]'
-    }`}>
+    <div className="About-card flex items-center justify-center w-full h-screen overflow-hidden">
       {/* OPTIMIZATION: Added ref for viewport detection */}
       <div ref={aboutContainerRef} className="About-container relative flex items-center justify-center w-1/2">
         {/* OPTIMIZATION: Only render content when it should be visible */}
