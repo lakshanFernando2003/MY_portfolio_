@@ -3,9 +3,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimateLamp from '../Section Lamps/AnimateLamp';
+import './RoadMap.css';
 import "../MediaQuery/largeScreen.css"
 import "../MediaQuery/SmallScreen.css"
-import './RoadMap.css';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -83,20 +83,6 @@ const roadmapData = [
       "Receive mentorship from senior developers"
     ],
   },
-  // {
-  //   id: 6,
-  //   review: "After graduation, my goal is to become a professional software engineer, specializing in modern web technologies and contributing to innovative projects that make a positive impact.",
-  //   imgPath: "/images/roadmap1.png",
-  //   logoPath: "/images/logo2.png",
-  //   title: "Future Plans",
-  //   date: "2024 and Beyond",
-  //   responsibilities: [
-  //     "Work as a professional software engineer",
-  //     "Specialize in modern web development",
-  //     "Contribute to innovative tech solutions",
-  //     "Eventually mentor new developers and give back to the community"
-  //   ],
-  // }
 ];
 
 // GlowCard component for roadmap items
