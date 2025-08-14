@@ -827,11 +827,11 @@
   /* project section resize and design for mobile layout */
 
   .project-recent-heading{
-    margin-top: 1rem;
+    margin-top: 5rem;
   }
 
  .project-vidbox {
-    height: 400px !important;
+    height: 500px !important;
     width: 100% !important;
     max-width: 50vw !important;
   }
@@ -842,7 +842,7 @@
   }
 
   .project-info h2 {
-    font-size: 2rem !important;
+    font-size: 3rem !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
   }
@@ -858,7 +858,7 @@
   }
 
   .project-info a {
-    padding: 0.4rem 0.8rem !important;
+    /* padding: 0.4rem 0.8rem !important; */
     margin-top: auto !important;
   }
 
@@ -867,6 +867,7 @@
   }
 
   .project-card-container {
+    padding-bottom: 5rem;
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
@@ -875,10 +876,10 @@
   }
 
   .project-card {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     scroll-snap-align: center;
     width: 85vw !important;
-    min-height: 400px !important;
+    min-height: 600px !important;
     padding: 0.5rem !important;
     flex-direction: row !important;
   }
